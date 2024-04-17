@@ -1,7 +1,7 @@
-package com.Ada.SkyFeedConnect.controller;
+package com.Ada.SFCAuthenticator.controller;
 
-import com.Ada.SkyFeedConnect.dto.AuthenticationDTO;
-import com.Ada.SkyFeedConnect.service.AuthService;
+import com.Ada.SFCAuthenticator.dto.AuthenticationDTO;
+import com.Ada.SFCAuthenticator.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

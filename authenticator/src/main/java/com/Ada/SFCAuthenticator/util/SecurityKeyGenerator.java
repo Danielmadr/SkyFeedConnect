@@ -1,4 +1,4 @@
-package com.Ada.SkyFeedConnect.util;
+package com.Ada.SFCAuthenticator.util;
 import java.security.SecureRandom;
 
 public class SecurityKeyGenerator {

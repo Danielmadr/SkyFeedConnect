@@ -1,4 +1,4 @@
-package com.Ada.SkyFeedConnect.dto;
+package com.Ada.SFCAuthenticator.dto;
 
 public record UserDTO (
         String username,

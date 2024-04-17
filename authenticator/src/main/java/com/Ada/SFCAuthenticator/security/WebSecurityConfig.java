@@ -1,12 +1,11 @@
-package com.Ada.SkyFeedConnect.security;
+package com.Ada.SFCAuthenticator.security;
 
-import com.Ada.SkyFeedConnect.security.jwt.AuthEntryPointJwt;
-import com.Ada.SkyFeedConnect.security.jwt.AuthFilterToken;
+import com.Ada.SFCAuthenticator.security.jwt.AuthEntryPointJwt;
+import com.Ada.SFCAuthenticator.security.jwt.AuthFilterToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;

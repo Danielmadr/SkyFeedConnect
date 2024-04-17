@@ -1,7 +1,7 @@
-package com.Ada.SkyFeedConnect.controller;
+package com.Ada.SFCAuthenticator.controller;
 
-import com.Ada.SkyFeedConnect.dto.UserDTO;
-import com.Ada.SkyFeedConnect.service.UserService;
+import com.Ada.SFCAuthenticator.dto.UserDTO;
+import com.Ada.SFCAuthenticator.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

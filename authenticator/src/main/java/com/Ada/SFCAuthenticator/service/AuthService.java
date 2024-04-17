@@ -1,8 +1,8 @@
-package com.Ada.SkyFeedConnect.service;
+package com.Ada.SFCAuthenticator.service;
 
-import com.Ada.SkyFeedConnect.dto.AcessDTO;
-import com.Ada.SkyFeedConnect.dto.AuthenticationDTO;
-import com.Ada.SkyFeedConnect.security.jwt.JwtUtils;
+import com.Ada.SFCAuthenticator.dto.AcessDTO;
+import com.Ada.SFCAuthenticator.dto.AuthenticationDTO;
+import com.Ada.SFCAuthenticator.security.jwt.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;

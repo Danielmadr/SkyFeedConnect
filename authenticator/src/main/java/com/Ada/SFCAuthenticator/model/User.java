@@ -1,6 +1,6 @@
-package com.Ada.SkyFeedConnect.model;
+package com.Ada.SFCAuthenticator.model;
 
-import com.Ada.SkyFeedConnect.dto.UserDTO;
+import com.Ada.SFCAuthenticator.dto.UserDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

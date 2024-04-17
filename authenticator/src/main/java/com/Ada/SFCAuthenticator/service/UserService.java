@@ -1,9 +1,9 @@
-package com.Ada.SkyFeedConnect.service;
+package com.Ada.SFCAuthenticator.service;
 
-import com.Ada.SkyFeedConnect.dto.UserDTO;
-import com.Ada.SkyFeedConnect.dto.UsersListDTO;
-import com.Ada.SkyFeedConnect.model.User;
-import com.Ada.SkyFeedConnect.repository.UserRepository;
+import com.Ada.SFCAuthenticator.model.User;
+import com.Ada.SFCAuthenticator.dto.UserDTO;
+import com.Ada.SFCAuthenticator.dto.UsersListDTO;
+import com.Ada.SFCAuthenticator.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

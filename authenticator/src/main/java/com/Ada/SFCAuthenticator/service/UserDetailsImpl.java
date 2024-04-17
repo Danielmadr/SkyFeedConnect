@@ -1,6 +1,6 @@
-package com.Ada.SkyFeedConnect.service;
+package com.Ada.SFCAuthenticator.service;
 
-import com.Ada.SkyFeedConnect.model.User;
+import com.Ada.SFCAuthenticator.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

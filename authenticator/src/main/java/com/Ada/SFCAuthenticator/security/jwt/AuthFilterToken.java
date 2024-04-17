@@ -1,6 +1,6 @@
-package com.Ada.SkyFeedConnect.security.jwt;
+package com.Ada.SFCAuthenticator.security.jwt;
 
-import com.Ada.SkyFeedConnect.service.UserDatailServiceImpl;
+import com.Ada.SFCAuthenticator.service.UserDatailServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

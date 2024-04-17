@@ -1,6 +1,6 @@
-package com.Ada.SkyFeedConnect.security.jwt;
+package com.Ada.SFCAuthenticator.security.jwt;
 
-import com.Ada.SkyFeedConnect.service.UserDetailsImpl;
+import com.Ada.SFCAuthenticator.service.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

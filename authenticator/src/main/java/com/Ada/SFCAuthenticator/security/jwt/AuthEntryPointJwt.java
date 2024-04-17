@@ -1,4 +1,4 @@
-package com.Ada.SkyFeedConnect.security.jwt;
+package com.Ada.SFCAuthenticator.security.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;
