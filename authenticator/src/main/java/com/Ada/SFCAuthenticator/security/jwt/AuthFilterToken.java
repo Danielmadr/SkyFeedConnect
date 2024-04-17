@@ -1,10 +1,7 @@
 package com.Ada.SFCAuthenticator.security.jwt;
 
-import com.Ada.SFCAuthenticator.service.UserDatailServiceImpl;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,7 +10,12 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import java.io.IOException;
+import com.Ada.SFCAuthenticator.service.UserDatailServiceImpl;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class AuthFilterToken extends OncePerRequestFilter {
 
@@ -24,7 +26,10 @@ public class AuthFilterToken extends OncePerRequestFilter {
   private UserDatailServiceImpl userDatailService;
 
   @Override
-  protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+  protected void doFilterInternal(
+          HttpServletRequest request,
+          HttpServletResponse response,
+          FilterChain filterChain) throws ServletException, IOException {
     try {
       String jwt = getToken(request);
       if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
@@ -39,8 +44,6 @@ public class AuthFilterToken extends OncePerRequestFilter {
       }
     }catch (Exception e) {
       System.out.println("Ocorreu um erro ao tentar autenticar o token JWT: " + e.getMessage());
-    }finally {
-
     }
     filterChain.doFilter(request, response);
   }

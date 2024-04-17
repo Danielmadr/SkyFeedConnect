@@ -3,6 +3,7 @@ package com.Ada.SFCAuthenticator.service;
 import com.Ada.SFCAuthenticator.dto.AcessDTO;
 import com.Ada.SFCAuthenticator.dto.AuthenticationDTO;
 import com.Ada.SFCAuthenticator.security.jwt.JwtUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -15,6 +16,8 @@ public class AuthService {
 
   @Autowired
   private AuthenticationManager manager;
+
+  @Autowired
   private JwtUtils jwtUtils;
 
   public AcessDTO login(AuthenticationDTO loginInfo) {
@@ -34,6 +37,7 @@ public class AuthService {
       return new AcessDTO(token);
     } catch (BadCredentialsException e) {
       //todo Login ou senha invalidos
+      e.printStackTrace();
       return new AcessDTO(e.getMessage() + " " + loginInfo.username() + " " + loginInfo.password());
     }
   }

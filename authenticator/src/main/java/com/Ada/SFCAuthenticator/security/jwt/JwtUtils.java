@@ -1,13 +1,22 @@
 package com.Ada.SFCAuthenticator.security.jwt;
 
-import com.Ada.SFCAuthenticator.service.UserDetailsImpl;
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import java.security.Key;
 import java.util.Date;
+
+import javax.crypto.SecretKey;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import com.Ada.SFCAuthenticator.service.UserDetailsImpl;
+
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.UnsupportedJwtException;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtils {
@@ -28,13 +37,22 @@ public class JwtUtils {
   }
 
   public Key getSigningKey() {
-    return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
+   SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
+   return key;
+  }
+
+
+  public String getUserNameFromJwtToken(String jwt) {
+    return Jwts.parser()
+            .setSigningKey(getSigningKey()).build()
+            .parseClaimsJws(jwt).getBody().getSubject();
   }
 
   public boolean validateJwtToken(String token) {
     try {
       Jwts.parser().setSigningKey(getSigningKey()).build().parseClaimsJws(token);
       return true;
+
     } catch (MalformedJwtException e) {
       System.out.println("Token inválido" + e.getMessage());
 
@@ -47,11 +65,8 @@ public class JwtUtils {
     } catch (IllegalArgumentException e) {
       System.out.println("Token vazio" + e.getMessage());
     }
-    return false;
-  }
 
-  public String getUserNameFromJwtToken(String jwt) {
-    return Jwts.parser().setSigningKey(getSigningKey()).build().parseClaimsJws(jwt).getBody().getSubject();
+    return false;
   }
 }
 
