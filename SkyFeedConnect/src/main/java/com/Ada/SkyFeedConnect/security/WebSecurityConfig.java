@@ -39,7 +39,8 @@ public class WebSecurityConfig {
     http.csrf(csrf -> csrf.disable()) //todo não é recomendado desabilitar esse cara estudar o porquê!
             .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/**").permitAll());
+            .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/**").permitAll()
+                    .requestMatchers("/user/**").permitAll());//todo libera acesso geral, apenas para desenvolvimento olhar mais tarde
 
     return http.build();
   }

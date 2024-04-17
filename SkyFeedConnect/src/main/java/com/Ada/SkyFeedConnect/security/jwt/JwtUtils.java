@@ -12,10 +12,10 @@ import java.util.Date;
 @Component
 public class JwtUtils {
 
-  @Value("${jwt.secret}")//chave de segurança definida nas proproedades do projeto.
+  @Value("${projeto.jwtSecret}")//chave de segurança definida nas proproedades do projeto.
   private String jwtSecret;
 
-  @Value("${jwt.expirationMs}")
+  @Value("${projeto.jwtExpirationMs}")
   private int jwtExpirationMs;//tempo de expiração do token, definido nas propriedades do projeto.
 
   public String generateTokenFromUserDetailsImpl(UserDetailsImpl userDetails) {

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4ebc8ce7-a9f8-4359-98be-171bca4168c5" name="Changes" comment="feat: Custom UserDetails Service Implementation.&#10;UserDetailsImpl.java:&#10;-Implementation of UserDetails interface to represent user details.&#10;-Customization of user details (username, password, roles, etc.) for integration with Spring Security.">
+      <change afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/dto/AcessDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/dto/AuthenticationDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/dto/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/dto/UsersListDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/service/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/service/UserDatailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SkyFeedConnect/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SkyFeedConnect/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/security/jwt/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/security/jwt/JwtUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/service/UserDetailsImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/java/com/Ada/SkyFeedConnect/service/UserDetailsImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SkyFeedConnect/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/SkyFeedConnect/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2fBPfovmohQuneuzXrrok9oI0D6" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.Application.executor": "Run",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Users/danie/Desktop/Desenvolvedor/Ada/ModuloSpring/ProjetoMaven",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.Ada.SkyFeedConnect.dto" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="SkyFeedConnect" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.Ada.SkyFeedConnect.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4ebc8ce7-a9f8-4359-98be-171bca4168c5" name="Changes" comment="" />
+      <created>1713271603982</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1713271603982</updated>
+      <workItem from="1713271605010" duration="1987000" />
+      <workItem from="1713273610674" duration="6748000" />
+      <workItem from="1713310751758" duration="2152000" />
+      <workItem from="1713358716901" duration="6219000" />
+    </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1713272595052</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713272595052</updated>
+    </task>
+    <task id="LOCAL-00002" summary="docs: Update .gitignore to ignore IntelliJ IDEA files">
+      <option name="closed" value="true" />
+      <created>1713273299322</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713273299322</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: Initial security configuration using Spring Security.">
+      <option name="closed" value="true" />
+      <created>1713280014676</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713280014676</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: JWT Authentication Provider Implementation&#10;JwtUtils.java:&#10;Utility for generating and validating JWT tokens.&#10;Implementation of functions to generate tokens, extract token information, and validate tokens.&#10;&#10;AuthEntryPoint.java:&#10;Entry point for handling authentication failures.&#10;Implementation of commence() method to handle authentication errors.">
+      <option name="closed" value="true" />
+      <created>1713280107730</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713280107730</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: Custom UserDetails Service Implementation.&#10;UserDetailsImpl.java:&#10;-Implementation of UserDetails interface to represent user details.&#10;-Customization of user details (username, password, roles, etc.) for integration with Spring Security.">
+      <option name="closed" value="true" />
+      <created>1713280160216</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713280160216</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit" />
+    <MESSAGE value="docs: Update .gitignore to ignore IntelliJ IDEA files" />
+    <MESSAGE value="feat: Initial security configuration using Spring Security." />
+    <MESSAGE value="feat: JWT Authentication Provider Implementation&#10;JwtUtils.java:&#10;Utility for generating and validating JWT tokens.&#10;Implementation of functions to generate tokens, extract token information, and validate tokens.&#10;&#10;AuthEntryPoint.java:&#10;Entry point for handling authentication failures.&#10;Implementation of commence() method to handle authentication errors." />
+    <MESSAGE value="feat: Custom UserDetails Service Implementation.&#10;UserDetailsImpl.java:&#10;-Implementation of UserDetails interface to represent user details.&#10;-Customization of user details (username, password, roles, etc.) for integration with Spring Security." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Custom UserDetails Service Implementation.&#10;UserDetailsImpl.java:&#10;-Implementation of UserDetails interface to represent user details.&#10;-Customization of user details (username, password, roles, etc.) for integration with Spring Security." />
+  </component>
+</project>
