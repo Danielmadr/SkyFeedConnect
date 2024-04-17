@@ -32,10 +32,10 @@ public class AuthService {
       String token = jwtUtils.generateTokenFromUserDetailsImpl(userAuthDetails);
 
       return new AcessDTO(token);
-    }catch (BadCredentialsException e){
+    } catch (BadCredentialsException e) {
       //todo Login ou senha invalidos
+      return new AcessDTO(e.getMessage() + " " + loginInfo.username() + " " + loginInfo.password());
     }
-  return new AcessDTO("ACESSO NEGADO");
   }
 }
 

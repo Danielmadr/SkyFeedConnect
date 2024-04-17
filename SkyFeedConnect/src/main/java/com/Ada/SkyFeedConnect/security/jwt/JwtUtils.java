@@ -20,10 +20,10 @@ public class JwtUtils {
 
   public String generateTokenFromUserDetailsImpl(UserDetailsImpl userDetails) {
     return Jwts.builder()
-            .subject(userDetails.getUsername())
-            .issuedAt(new Date())
-            .expiration(new Date(new Date().getTime() + jwtExpirationMs))
-            .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+            .setSubject(userDetails.getUsername())
+            .setIssuedAt(new Date())
+            .setExpiration(new Date(new Date().getTime() + jwtExpirationMs))
+            .signWith(getSigningKey(), SignatureAlgorithm.HS512)
             .compact();
   }
 
@@ -50,5 +50,8 @@ public class JwtUtils {
     return false;
   }
 
+  public String getUserNameFromJwtToken(String jwt) {
+    return Jwts.parser().setSigningKey(getSigningKey()).build().parseClaimsJws(jwt).getBody().getSubject();
+  }
 }
 
