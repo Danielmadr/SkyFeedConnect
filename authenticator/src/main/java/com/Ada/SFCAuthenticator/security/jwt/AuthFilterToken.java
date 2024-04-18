@@ -2,6 +2,7 @@ package com.Ada.SFCAuthenticator.security.jwt;
 
 import java.io.IOException;
 
+import jakarta.annotation.Nonnull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,14 +27,14 @@ public class AuthFilterToken extends OncePerRequestFilter {
 
   @Override
   protected void doFilterInternal(
-          HttpServletRequest request,
-          HttpServletResponse response,
-          FilterChain filterChain) throws ServletException, IOException {
+          @Nonnull HttpServletRequest request,
+          @Nonnull HttpServletResponse response,
+          @Nonnull FilterChain filterChain) throws ServletException, IOException {
     try {
       String jwt = getToken(request);
       if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
 
-        String username = jwtUtils.getUserNameFromJwtToken(jwt);
+        String username = jwtUtils.extractUsernameFromJwtToken(jwt);
 
         UserDetails userDetails = userDatailService.loadUserByUsername(username);
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
@@ -43,8 +44,6 @@ public class AuthFilterToken extends OncePerRequestFilter {
       }
     }catch (Exception e) {
       System.out.println("Ocorreu um erro ao tentar autenticar o token JWT: ");
-    }finally {
-
     }
 
     filterChain.doFilter(request, response);

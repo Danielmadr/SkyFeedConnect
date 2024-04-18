@@ -1,22 +1,16 @@
 package com.Ada.SFCAuthenticator.security.jwt;
 
-import java.security.Key;
 import java.util.Date;
-
+import java.util.function.Function;
 import javax.crypto.SecretKey;
+
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.Ada.SFCAuthenticator.service.UserDetailsImpl;
-
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.UnsupportedJwtException;
-import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtils {
@@ -29,42 +23,43 @@ public class JwtUtils {
 
   public String generateTokenFromUserDetailsImpl(UserDetailsImpl userDetails) {
     return Jwts.builder()
-            .setSubject(userDetails.getUsername())
-            .setIssuedAt(new Date())
-            .setExpiration(new Date(new Date().getTime() + jwtExpirationMs))
-            .signWith(getSigningKey(), SignatureAlgorithm.HS512).compact();
+            .subject(userDetails.getUsername())
+            .issuedAt(new Date())
+            .expiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
+            .signWith(getSigningKey())
+            .compact();
   }
 
-  public Key getSigningKey() {
-   SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
-   return key;
+  public String extractUsernameFromJwtToken(String token) {
+    return extractClaimFromJwtToken(token, Claims::getSubject);
   }
 
-
-  public String getUserNameFromJwtToken(String token) {
-    return Jwts.parser().setSigningKey(getSigningKey()).build()
-            .parseClaimsJws(token).getBody().getSubject();
+  public Date extractExpirationDateFromJwtToken(String token) {
+    return extractClaimFromJwtToken(token, Claims::getExpiration);
   }
-
   public boolean validateJwtToken(String token) {
     try {
       Jwts.parser().setSigningKey(getSigningKey()).build().parseClaimsJws(token);
       return true;
-
-    } catch (MalformedJwtException e) {
-      System.out.println("Token inválido" + e.getMessage());
-
-      //todo: pesquisar sobre logForJ
-
     } catch (ExpiredJwtException e) {
-      System.out.println("Token expirado" + e.getMessage());
+      throw new RuntimeException("Token expirado", e);
     } catch (UnsupportedJwtException e) {
-      System.out.println("Token não suportado" + e.getMessage());
+      throw new RuntimeException("Token não suportado", e);
     } catch (IllegalArgumentException e) {
-      System.out.println("Token vazio" + e.getMessage());
+      throw new RuntimeException("Token vazio", e);
+    } catch (MalformedJwtException e) {
+      throw new RuntimeException("Token inválido", e);
     }
-
-    return false;
   }
+  private <T> T extractClaimFromJwtToken(String token, Function<Claims, T> claimsResolver) {
+
+    Claims claims = Jwts.parser().setSigningKey(getSigningKey()).build().parseClaimsJws(token).getBody();
+    return claimsResolver.apply(claims);
+  }
+
+  private SecretKey getSigningKey() {
+    return Keys.hmacShaKeyFor(jwtSecret.getBytes());
+  }
+
 }
 

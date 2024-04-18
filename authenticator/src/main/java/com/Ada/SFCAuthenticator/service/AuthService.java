@@ -16,12 +16,6 @@ import com.Ada.SFCAuthenticator.security.jwt.JwtUtils;
 @Service
 public class AuthService {
 
-  /*@Autowired
-  private PasswordEncoder passwordEncoder;
-
-  @Autowired
-  private UserRepository userRepository;//todo remover para teste*/
-
   @Autowired
   private AuthenticationManager authenticationManager;
 
