@@ -17,7 +17,7 @@ public class UserDetailsImpl implements UserDetails {
   private String password;
 
   public UserDetailsImpl(Long id, String name, String username,
-                         String email, String password,
+                          String password,String email,
                          Collection<? extends GrantedAuthority> authorities) {
     super();
     this.id = id;
@@ -29,6 +29,7 @@ public class UserDetailsImpl implements UserDetails {
   }
 
   public static UserDetailsImpl build(User user) {
+
     return new UserDetailsImpl(
             user.getId(),
             user.getUsername(),

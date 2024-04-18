@@ -1,13 +1,14 @@
 package com.Ada.SFCAuthenticator.service;
 
-import com.Ada.SFCAuthenticator.model.User;
-import com.Ada.SFCAuthenticator.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.Ada.SFCAuthenticator.model.User;
+import com.Ada.SFCAuthenticator.repository.UserRepository;
 @Service
 public class UserDatailServiceImpl implements UserDetailsService {
 
@@ -16,7 +17,6 @@ public class UserDatailServiceImpl implements UserDetailsService {
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     User user = userRepository.findByLogin(username).get();
-    //todo tratar erro
     return UserDetailsImpl.build(user);
   }
 }

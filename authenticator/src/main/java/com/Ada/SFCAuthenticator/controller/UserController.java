@@ -1,30 +1,36 @@
 package com.Ada.SFCAuthenticator.controller;
 
-import com.Ada.SFCAuthenticator.dto.UserDTO;
-import com.Ada.SFCAuthenticator.service.UserService;
+
+import com.Ada.SFCAuthenticator.dto.AccessDTO;
+import com.Ada.SFCAuthenticator.dto.AuthenticationDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
-@RequestMapping("/user")
+import com.Ada.SFCAuthenticator.dto.UserDTO;
+import com.Ada.SFCAuthenticator.service.UserService;
+import org.springframework.web.util.UriComponentsBuilder;
+
+@RestController
+@RequestMapping(value ="/users")
+@CrossOrigin
+@RequiredArgsConstructor
 public class UserController {
 
-  @Autowired
-  private UserService service;
+  private final UserService userService;
 
   @PostMapping("/save")
-  public ResponseEntity<?> save(@RequestBody UserDTO user) {
-    service.save(user);
+  public ResponseEntity<?> save(@RequestBody UserDTO user, UriComponentsBuilder uriComponentsBuilder) {
+    this.userService.save(user);
+    var uri = uriComponentsBuilder.path("/users/all").build().toUri();
+    return ResponseEntity.created(uri).build();
+  }
+
+  @DeleteMapping("/delete")
+  public ResponseEntity<?> delete(@RequestBody AuthenticationDTO access) {
+    this.userService.delete(access);
     return ResponseEntity.ok().build();
   }
 
-  @GetMapping("/all")
-  public ResponseEntity<?> findAll() {
-    return ResponseEntity.ok(service.findAll());
-  }
 }

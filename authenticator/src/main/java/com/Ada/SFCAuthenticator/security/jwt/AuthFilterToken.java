@@ -11,7 +11,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.Ada.SFCAuthenticator.service.UserDatailServiceImpl;
-
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -37,21 +36,24 @@ public class AuthFilterToken extends OncePerRequestFilter {
         String username = jwtUtils.getUserNameFromJwtToken(jwt);
 
         UserDetails userDetails = userDatailService.loadUserByUsername(username);
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-        authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-        SecurityContextHolder.getContext().setAuthentication(authToken);
+        SecurityContextHolder.getContext().setAuthentication(auth);
       }
     }catch (Exception e) {
-      System.out.println("Ocorreu um erro ao tentar autenticar o token JWT: " + e.getMessage());
+      System.out.println("Ocorreu um erro ao tentar autenticar o token JWT: ");
+    }finally {
+
     }
+
     filterChain.doFilter(request, response);
   }
 
   private String getToken(HttpServletRequest request) {
-    String authHeader = request.getHeader("Authorization");
-    if (StringUtils.hasText(authHeader) && authHeader.startsWith("Bearer")) {
-      return authHeader.replace("Bearer ", "");
+    String headerToken = request.getHeader("Authorization");
+    if (StringUtils.hasText(headerToken) && headerToken.startsWith("Bearer")) {
+      return headerToken.replace("Bearer ", "");
     }
     return null;
   }

@@ -32,8 +32,7 @@ public class JwtUtils {
             .setSubject(userDetails.getUsername())
             .setIssuedAt(new Date())
             .setExpiration(new Date(new Date().getTime() + jwtExpirationMs))
-            .signWith(getSigningKey(), SignatureAlgorithm.HS512)
-            .compact();
+            .signWith(getSigningKey(), SignatureAlgorithm.HS512).compact();
   }
 
   public Key getSigningKey() {
@@ -42,10 +41,9 @@ public class JwtUtils {
   }
 
 
-  public String getUserNameFromJwtToken(String jwt) {
-    return Jwts.parser()
-            .setSigningKey(getSigningKey()).build()
-            .parseClaimsJws(jwt).getBody().getSubject();
+  public String getUserNameFromJwtToken(String token) {
+    return Jwts.parser().setSigningKey(getSigningKey()).build()
+            .parseClaimsJws(token).getBody().getSubject();
   }
 
   public boolean validateJwtToken(String token) {
@@ -59,9 +57,9 @@ public class JwtUtils {
       //todo: pesquisar sobre logForJ
 
     } catch (ExpiredJwtException e) {
-      System.out.println("Token expirado");
+      System.out.println("Token expirado" + e.getMessage());
     } catch (UnsupportedJwtException e) {
-      System.out.println("Token não suportado");
+      System.out.println("Token não suportado" + e.getMessage());
     } catch (IllegalArgumentException e) {
       System.out.println("Token vazio" + e.getMessage());
     }

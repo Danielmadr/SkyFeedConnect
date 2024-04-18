@@ -1,7 +1,5 @@
 package com.Ada.SFCAuthenticator.security;
 
-import com.Ada.SFCAuthenticator.security.jwt.AuthEntryPointJwt;
-import com.Ada.SFCAuthenticator.security.jwt.AuthFilterToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.Ada.SFCAuthenticator.security.jwt.AuthEntryPointJwt;
+import com.Ada.SFCAuthenticator.security.jwt.AuthFilterToken;
 @Configuration
 @EnableMethodSecurity
 public class WebSecurityConfig {
@@ -40,12 +40,13 @@ public class WebSecurityConfig {
 
   @Bean
   public SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
+
     http.cors(Customizer.withDefaults());
     http.csrf(csrf -> csrf.disable()) //todo não é recomendado desabilitar esse cara estudar o porquê!
             .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/**").permitAll()
-                    .requestMatchers("/user/**").permitAll()
+                    .requestMatchers("/users/**").permitAll()
                     .anyRequest().authenticated());//todo libera acesso geral, apenas para desenvolvimento olhar mais tarde
 
     http.addFilterBefore(authFilterToken(), UsernamePasswordAuthenticationFilter.class);
