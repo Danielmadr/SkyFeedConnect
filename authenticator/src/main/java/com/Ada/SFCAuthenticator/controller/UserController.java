@@ -1,10 +1,8 @@
 package com.Ada.SFCAuthenticator.controller;
 
-
-import com.Ada.SFCAuthenticator.dto.AccessDTO;
 import com.Ada.SFCAuthenticator.dto.AuthenticationDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
