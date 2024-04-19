@@ -1,4 +1,4 @@
-package com.Ada.SFCAuthenticator.model;
+package com.Ada.SFCAuthenticator.model.enums;
 
 public enum RoleName {
   ROLE_CUSTOMER,

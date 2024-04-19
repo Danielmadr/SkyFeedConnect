@@ -1,5 +1,6 @@
 package com.Ada.SFCAuthenticator.model;
 
+import com.Ada.SFCAuthenticator.model.enums.RoleName;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
