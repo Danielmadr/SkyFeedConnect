@@ -1,0 +1,66 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+}
+
+.auth-container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 0.5em;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 1em;
+}
+
+.social-login {
+  display: block;
+  width: 90%;
+  margin: 0 auto 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  color: #fff;
+  cursor: pointer;
+}
+
+.social-login.google {
+  background-color: #db4437;
+}
+
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 20px;
+    max-width: 90%;
+  }
+}
