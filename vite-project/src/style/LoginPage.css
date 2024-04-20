@@ -1,0 +1,64 @@
+.divider {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.divider span {
+  flex-grow: 1;
+  padding: 0 10px;
+}
+
+.divider:before,
+.divider:after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background: #ccc;
+}
+
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-in-form input {
+  width: 90%;
+  margin-bottom: 10px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.forgot-password-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  margin-bottom: 1em;
+}
+
+.sign-in-button {
+  width: 90%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  background-color: #4caf50;
+  cursor: pointer;
+}
+
+.sign-in-redirect {
+  margin-top: 20px;
+  color: #666;
+}
+
+.sign-up-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  margin-top: 2em;
+}

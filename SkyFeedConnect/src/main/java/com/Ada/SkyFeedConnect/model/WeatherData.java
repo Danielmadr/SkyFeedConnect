@@ -10,14 +10,10 @@ public class WeatherData {
         return temperatureInfo;
     }
 
-    public void setTemperatureInfo(TemperatureInfo temperatureInfo) {
-        this.temperatureInfo = temperatureInfo;
-    }
-
     public static class TemperatureInfo {
         private double temp;
-
-        private double feels_like;
+        @JsonProperty("feels_like")
+        private double feelsLike;
 
         public double getTemp() {
             return temp;
@@ -28,11 +24,11 @@ public class WeatherData {
         }
 
         public double getfeelsLike() {
-            return feels_like;
+            return feelsLike;
         }
 
         public void setfeels_like(double feels_like) {
-            this.feels_like = feels_like;
+            this.feelsLike = feels_like;
         }
     }
 }
