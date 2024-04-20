@@ -7,12 +7,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.Ada.SFCAuthenticator.dto.UserResponseDTO;
 import com.Ada.SFCAuthenticator.service.UserService;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping(value ="/users")
+@RequestMapping(value = "/users")
 @CrossOrigin
 @RequiredArgsConstructor
 public class UserController {
@@ -29,6 +28,12 @@ public class UserController {
   @DeleteMapping("/delete")
   public ResponseEntity<?> delete(@RequestBody AuthenticationDTO access) {
     this.userService.delete(access);
+    return ResponseEntity.ok().build();
+  }
+
+  @GetMapping("/email/{email}")
+  public ResponseEntity<?> sendEmail(@PathVariable String email) {
+    this.userService.testSendEmail(email);
     return ResponseEntity.ok().build();
   }
 

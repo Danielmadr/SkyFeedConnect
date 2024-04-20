@@ -34,14 +34,17 @@ public class GlobalHandlerException {
   public ResponseEntity<ExceptionDTO> handleExpiredJwtException(ExpiredJwtException ex) {
     return ResponseEntity.status(401).body(new ExceptionDTO(ex.getMessage()));
   }
+
   @ExceptionHandler(UnsupportedJwtException.class)
   public ResponseEntity<ExceptionDTO> handleUnsupportedJwtException(UnsupportedJwtException ex) {
     return ResponseEntity.status(401).body(new ExceptionDTO(ex.getMessage()));
   }
+
   @ExceptionHandler(IllegalArgumentException.class)
   public ResponseEntity<ExceptionDTO> handleIllegalArgumentException(IllegalArgumentException ex) {
     return ResponseEntity.status(401).body(new ExceptionDTO(ex.getMessage()));
   }
+
   @ExceptionHandler(MalformedJwtException.class)
   public ResponseEntity<ExceptionDTO> handleMalformedJwtException(MalformedJwtException ex) {
     return ResponseEntity.status(401).body(new ExceptionDTO(ex.getMessage()));

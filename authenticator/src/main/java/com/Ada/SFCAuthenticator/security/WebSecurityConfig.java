@@ -17,6 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.Ada.SFCAuthenticator.security.jwt.AuthEntryPointJwt;
 import com.Ada.SFCAuthenticator.security.jwt.AuthFilterToken;
+
 @Configuration
 @EnableMethodSecurity
 @RequiredArgsConstructor
@@ -35,12 +36,12 @@ public class WebSecurityConfig {
   }
 
   @Bean
-  public AuthFilterToken authFilterToken(){
+  public AuthFilterToken authFilterToken() {
     return new AuthFilterToken();
   }
 
   @Bean
-  public SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
+  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
     http.cors(Customizer.withDefaults());
     http.csrf(AbstractHttpConfigurer::disable) //todo não é recomendado desabilitar esse cara estudar o porquê!

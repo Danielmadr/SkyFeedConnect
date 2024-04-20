@@ -10,14 +10,14 @@ import com.Ada.SFCAuthenticator.model.User;
 
 public class UserDetailsImpl implements UserDetails {
 
-  private Long id;
-  private String name;
-  private String username;
-  private String email;
-  private String password;
+  private final Long id;
+  private final String name;
+  private final String username;
+  private final String email;
+  private final String password;
 
   public UserDetailsImpl(Long id, String name, String username,
-                          String password,String email,
+                         String password, String email,
                          Collection<? extends GrantedAuthority> authorities) {
     super();
     this.id = id;
@@ -39,7 +39,7 @@ public class UserDetailsImpl implements UserDetails {
             new ArrayList<>());
   }
 
-  private Collection<? extends GrantedAuthority> authorities;
+  private final Collection<? extends GrantedAuthority> authorities;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {

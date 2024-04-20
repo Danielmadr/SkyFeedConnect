@@ -4,5 +4,5 @@ import com.Ada.SFCAuthenticator.model.User;
 
 import java.util.List;
 
-public record UsersListDTO (List<User> users){
+public record UsersListDTO(List<User> users) {
 }

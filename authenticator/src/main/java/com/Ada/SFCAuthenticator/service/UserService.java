@@ -21,12 +21,11 @@ public class UserService {
 
   private final PasswordEncoder passwordEncoder;
 
+  private final EmailService emailService;
+
   public void saveNewUser(UserRequestDTO user) {
-    if(userRepository.existsByLogin(user.login())) {
-      throw new UserAlreadyRegisteredException("login", user.login());
-    }
-    if(userRepository.existsByEmail(user.email())) {
-      throw new UserAlreadyRegisteredException("email", user.email());
+    if (userRepository.existsByLogin(user.email())) {
+      throw new UserAlreadyRegisteredException(user.email());
     }
 
     User newUser = new User(user);
@@ -34,30 +33,45 @@ public class UserService {
     newUser.setStatus(UserStatus.PENDING);
     userRepository.save(newUser);
 
-    //todo verificação e conta
+    emailService.sendEmail(
+            user.email(),
+            "Bem vindo(a) ao SkyFeedConnect",
+            """
+                    Seja bem vindo(a) ao SkyFeedConnect.\s
+                                        
+                    Confira seu email e acesse o link para ativar sua conta: https://www.skyfeedconnect.com.br/activate/"""
+    );
   }
 
   public void delete(AuthenticationDTO access) {
     User user = userRepository.findByLogin(access.username()).orElseThrow(
-      () -> new UserNotFoundException(access.username())
+            () -> new UserNotFoundException(access.username())
     );
 
     if (passwordEncoder.matches(access.password(), user.getPassword())) {
       userRepository.delete(user);
-    }else {
+    } else {
       throw new InvalidPasswordException();
     }
   }
 
   public UserResponseDTO findByLogin(String login) { //todo para teste
     User user = userRepository.findByLogin(login).orElseThrow(
-      () -> new UserNotFoundException(login)
+            () -> new UserNotFoundException(login)
     );
     return new UserResponseDTO(user);
   }
 
-
-
-
-
+  public void testSendEmail(String email) {//todo apagar apenas para testar
+    try {
+      String message = emailService.sendEmail(
+              email,
+              "Bem vindo(a) ao SkyFeedConnect",
+              "Seja bem vindo(a) ao SkyFeedConnect. Confira seu email e acesse o link para ativar sua conta: https://www.skyfeedconnect.com.br/activate/"
+      );
+      System.out.println("Email enviado com sucesso!\n" + message);
+    } catch (Exception e) {
+      System.err.println("Erro ao enviar email: " + e.getMessage());
+    }
+  }
 }

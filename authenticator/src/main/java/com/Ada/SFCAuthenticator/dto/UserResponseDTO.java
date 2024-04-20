@@ -8,17 +8,15 @@ public record UserResponseDTO(
         String username,
         String login,
         String password,
-        String email,
         UserStatus status
 ) {
   public UserResponseDTO(User user) {
     this(
-      user.getId(),
-      user.getUsername(),
-      user.getLogin(),
-      user.getPassword(),
-      user.getEmail(),
-      user.getStatus()
+            user.getId(),
+            user.getUsername(),
+            user.getLogin(),
+            user.getPassword(),
+            user.getStatus()
     );
   }
 }

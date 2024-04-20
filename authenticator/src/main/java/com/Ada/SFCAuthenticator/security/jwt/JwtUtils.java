@@ -19,7 +19,7 @@ public class JwtUtils {
   private String jwtSecret;
 
   @Value("${projeto.jwtExpirationMs}")
-  private int jwtExpirationMs;//tempo de expiração do token, definido nas propriedades do projeto.
+  private int jwtExpirationMs;//tempo de expiração do "token", definido nas propriedades do projeto.
 
   public String generateTokenFromUserDetailsImpl(UserDetailsImpl userDetails) {
     return Jwts.builder()
@@ -32,10 +32,6 @@ public class JwtUtils {
 
   public String extractUsernameFromJwtToken(String token) {
     return extractClaimFromJwtToken(token, Claims::getSubject);
-  }
-
-  public Date extractExpirationDateFromJwtToken(String token) {
-    return extractClaimFromJwtToken(token, Claims::getExpiration);
   }
   public boolean validateJwtToken(String token) {
     try {

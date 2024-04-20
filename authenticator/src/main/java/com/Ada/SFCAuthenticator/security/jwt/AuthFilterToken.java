@@ -42,7 +42,7 @@ public class AuthFilterToken extends OncePerRequestFilter {
 
         SecurityContextHolder.getContext().setAuthentication(auth);
       }
-    }catch (Exception e) {
+    } catch (Exception e) {
       System.out.println("Ocorreu um erro ao tentar autenticar o token JWT: ");
     }
 

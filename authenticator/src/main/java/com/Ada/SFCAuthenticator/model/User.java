@@ -24,13 +24,12 @@ public class User {
   private String username;
 
   @Column(nullable = false, unique = true)
-  private String login;
+  private String email;
+
+  private String login = this.email;
 
   @Column(nullable = false)
   private String password;
-
-  @Column(nullable = false, unique = true)
-  private String email;
 
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
@@ -38,8 +37,11 @@ public class User {
 
   public User(UserResponseDTO userDTO) {
     BeanUtils.copyProperties(userDTO, this);
+    this.login = this.email;
   }
+
   public User(UserRequestDTO userDTO) {
     BeanUtils.copyProperties(userDTO, this);
+    this.login = this.email;
   }
 }
