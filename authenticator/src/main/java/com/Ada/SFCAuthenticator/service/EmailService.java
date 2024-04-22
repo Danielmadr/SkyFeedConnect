@@ -1,9 +1,12 @@
 package com.Ada.SFCAuthenticator.service;
 
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
+import org.springframework.http.HttpHeaders;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,18 +18,20 @@ public class EmailService {
 
   private final JavaMailSender javaMailSender;
 
-  public String sendEmail(String destiny, String subject, String body) {
-    try {
-      SimpleMailMessage message = new SimpleMailMessage();
-      message.setFrom(sender);
-      message.setTo(destiny);
-      message.setSubject(subject);
-      message.setText(body);
-      javaMailSender.send(message);
+  public void sendEmail(String destiny, String subject, String body, HttpHeaders headers) throws MessagingException{
+    MimeMessage message = javaMailSender.createMimeMessage();
 
-      return "Email enviado com sucesso!";
-    } catch (Exception e) {
-      return "Erro ao enviar email: " + e.getMessage();
-    }
+    // Use MimeMessageHelper para configurar o e-mail
+    MimeMessageHelper helper = new MimeMessageHelper(message,"UTF-8"); // true indica que o e-mail terá conteúdo HTML
+
+    // Defina o remetente, destinatário, assunto e corpo do e-mail
+    helper.setFrom(sender);
+    helper.setTo(destiny);
+    helper.setSubject(subject);
+    helper.setText(body, true); // O segundo parâmetro true indica que o corpo é HTML
+
+    // Envie o e-mail
+    javaMailSender.send(message);
+    System.err.println("Email de verificação enviado"); // Adicionando um log
   }
 }

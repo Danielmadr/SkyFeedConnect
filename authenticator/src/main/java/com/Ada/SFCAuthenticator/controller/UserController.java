@@ -2,6 +2,7 @@ package com.Ada.SFCAuthenticator.controller;
 
 import com.Ada.SFCAuthenticator.dto.AuthenticationDTO;
 import com.Ada.SFCAuthenticator.dto.UserRequestDTO;
+import com.Ada.SFCAuthenticator.dto.VerifyMessage;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
@@ -31,10 +32,8 @@ public class UserController {
     return ResponseEntity.ok().build();
   }
 
-  @GetMapping("/email/{email}")
-  public ResponseEntity<?> sendEmail(@PathVariable String email) {
-    this.userService.testSendEmail(email);
-    return ResponseEntity.ok().build();
+  @GetMapping("/activate/{uuid}")
+  public ResponseEntity<VerifyMessage> verifyUser(@PathVariable String uuid) {
+    return ResponseEntity.ok(this.userService.verifyUser(uuid));
   }
-
 }
