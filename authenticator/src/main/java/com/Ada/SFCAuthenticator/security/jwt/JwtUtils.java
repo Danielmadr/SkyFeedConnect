@@ -15,10 +15,10 @@ import com.Ada.SFCAuthenticator.service.UserDetailsImpl;
 @Component
 public class JwtUtils {
 
-  @Value("${projeto.jwtSecret}")//chave de segurança definida nas proproedades do projeto.
+  @Value("${project.jwtSecret}")//chave de segurança definida nas proproedades do projeto.
   private String jwtSecret;
 
-  @Value("${projeto.jwtExpirationMs}")
+  @Value("${project.jwtExpirationMs}")
   private int jwtExpirationMs;//tempo de expiração do "token", definido nas propriedades do projeto.
 
   public String generateTokenFromUserDetailsImpl(UserDetailsImpl userDetails) {

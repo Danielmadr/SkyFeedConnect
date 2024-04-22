@@ -1,9 +1,7 @@
 package com.Ada.SFCAuthenticator.config;
 
 import com.Ada.SFCAuthenticator.dto.ExceptionMessageDTO;
-import com.Ada.SFCAuthenticator.model.exceptions.InvalidPasswordException;
-import com.Ada.SFCAuthenticator.model.exceptions.UserAlreadyRegisteredException;
-import com.Ada.SFCAuthenticator.model.exceptions.UserNotFoundException;
+import com.Ada.SFCAuthenticator.model.exceptions.*;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
@@ -27,6 +25,16 @@ public class GlobalHandlerException {
 
   @ExceptionHandler(UserAlreadyRegisteredException.class)
   public ResponseEntity<ExceptionMessageDTO> handleUserAlreadyRegisteredException(UserAlreadyRegisteredException ex) {
+    return ResponseEntity.status(409).body(new ExceptionMessageDTO(ex.getMessage()));
+  }
+
+  @ExceptionHandler(EmailExpiredException.class)
+  public ResponseEntity<ExceptionMessageDTO> handleEmailExpiredException(EmailExpiredException ex) {
+    return ResponseEntity.status(400).body(new ExceptionMessageDTO(ex.getMessage()));
+  }
+
+  @ExceptionHandler(AccountAlreadyVerifiedOrWrongLinkException.class)
+  public ResponseEntity<ExceptionMessageDTO> handleExpiredJwtException(ExpiredJwtException ex) {
     return ResponseEntity.status(409).body(new ExceptionMessageDTO(ex.getMessage()));
   }
 
