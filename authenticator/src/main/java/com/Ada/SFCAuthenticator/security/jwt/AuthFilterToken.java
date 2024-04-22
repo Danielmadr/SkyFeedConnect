@@ -30,10 +30,10 @@ public class AuthFilterToken extends OncePerRequestFilter {
           @Nonnull HttpServletRequest request,
           @Nonnull HttpServletResponse response,
           @Nonnull FilterChain filterChain) throws ServletException, IOException {
-    try {
-      String jwt = getToken(request);
-      if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
 
+    String jwt = getToken(request);
+    if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
+      try {
         String username = jwtUtils.extractUsernameFromJwtToken(jwt);
 
         UserDetails userDetails = userDatailService.loadUserByUsername(username);
@@ -41,11 +41,12 @@ public class AuthFilterToken extends OncePerRequestFilter {
         auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
         SecurityContextHolder.getContext().setAuthentication(auth);
-      }
-    } catch (Exception e) {
-      System.out.println("Ocorreu um erro ao tentar autenticar o token JWT: ");
-    }
 
+      } catch (Exception e) {
+        logger.error("Erro ao processar token JWT e configurar autenticação.", e);
+        throw new ServletException("Falha ao processar token JWT e configurar autenticação.", e);
+      }
+    }
     filterChain.doFilter(request, response);
   }
 

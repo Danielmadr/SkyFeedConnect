@@ -35,13 +35,9 @@ public class User {
   @Column(nullable = false)
   private UserStatus status;
 
-  public User(UserResponseDTO userDTO) {
-    BeanUtils.copyProperties(userDTO, this);
-    this.login = this.email;
-  }
-
   public User(UserRequestDTO userDTO) {
     BeanUtils.copyProperties(userDTO, this);
     this.login = this.email;
+    this.status = UserStatus.PENDING;
   }
 }
