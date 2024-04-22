@@ -19,6 +19,15 @@ public class NewsResponseIBGE {
         private String titulo;
         private String introducao;
         private String link;
+        private String imagens;
+
+        public String getImagens() {
+            return imagens;
+        }
+
+        public void setImagens(String imagens) {
+            this.imagens = imagens;
+        }
 
         public String getData_publicacao() {
             return data_publicacao;
