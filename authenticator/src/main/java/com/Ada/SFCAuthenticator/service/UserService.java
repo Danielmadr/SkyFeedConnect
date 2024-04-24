@@ -51,7 +51,7 @@ public class UserService {
 
     User newUser = createUserFromDTO(user);
     UserVerifier verifier = createVerifier(newUser);
-    sendWelcomeEmail(newUser.getEmail(), verifier);
+    sendWelcomeEmail(verifier);
   }
 
   private User createUserFromDTO(UserRequestDTO user) {
@@ -82,7 +82,7 @@ public class UserService {
     return passwordEncoder.encode(password);
   }
 
-  private void sendWelcomeEmail(String userEmail, UserVerifier user) {
+  private void sendWelcomeEmail(UserVerifier user) {
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.TEXT_HTML);
 
@@ -115,8 +115,8 @@ public class UserService {
             </html>
             """, activationLink, activationLink);
     try {
-      emailService.sendEmail(userEmail, subject, emailContent, headers);
-      logger.info("Email enviado para: {}", userEmail);
+      emailService.sendEmail(user.getUser().getEmail(), subject, emailContent, headers);
+      logger.info("Email enviado para: {}", user.getUser().getEmail());
     } catch (Exception e) {
       logger.error("Falha ao enviar o email de verificação", e);
       throw new EmailSendingException();
@@ -144,8 +144,8 @@ public class UserService {
     if (user.getExpirationDate().isBefore(now())) {
       user.setIdentifier(UUID.randomUUID());
       user.setExpirationDate(VERIFY_EMAIL_EXPIRATION);
-      resendVerificationEmail(user.getUser().getEmail(), user);
-      throw new ExpiredVerificationLinkException();
+      resendVerificationEmail(user);
+      return new VerifyMessage("Link expirado. Enviamos um novo link de verificação para seu email.");
     }
 
     User userToVerify = user.getUser();
@@ -156,11 +156,11 @@ public class UserService {
     return new VerifyMessage("Email verificado com sucesso!");
   }
 
-  private void resendVerificationEmail(String userEmail, UserVerifier user) {
+  private void resendVerificationEmail(UserVerifier user) {
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.TEXT_HTML);
 
-    String subject = "";
+    String subject = "Link de Verificação Atualizado";
     String activationLink = dominio + "users/activate/" + user.getIdentifier();
     String emailContent = String.format("""
             <html>
@@ -185,8 +185,8 @@ public class UserService {
             </html>
             """, activationLink, activationLink);
     try {
-      emailService.sendEmail(userEmail, subject, emailContent, headers);
-      logger.info("Email enviado para: {}", userEmail);
+      emailService.sendEmail(user.getUser().getEmail(), subject, emailContent, headers);
+      logger.info("Email enviado para: {}", user.getUser().getEmail());
     } catch (Exception e) {
       logger.error("Falha ao enviar o email de verificação", e);
       throw new EmailSendingException();

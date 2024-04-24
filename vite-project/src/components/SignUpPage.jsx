@@ -2,13 +2,17 @@ import "@style/SignUpPage.css";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SignUpPage = () => {
   const [userDetails, setUserDetails] = useState({
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
+    status: "A", // Definindo o status como "A" por padrão
   });
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -17,14 +21,28 @@ const SignUpPage = () => {
     setUserDetails((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (userDetails.password !== userDetails.confirmPassword) {
       console.log("Passwords do not match.");
+      alert("Passwords do not match.");
       return;
-    } else {
-      navigate("/main");
-      console.log("Form submitted", userDetails);
+    }
+
+    try {
+      const response = await axios.post("http://localhost:8080/users/save", {
+        username: userDetails.username,
+        email: userDetails.email,
+        password: userDetails.password,
+        status: userDetails.status,
+      });
+
+      console.log("User registered successfully:", response.data);
+      navigate("/login"); // Redireciona para a página de login após o cadastro
+    } catch (error) {
+      setError(error.response.data.message);
+      console.error("Failed to register user:", error);
     }
   };
 
@@ -37,6 +55,14 @@ const SignUpPage = () => {
       <h1>Sign Up</h1>
       <p className="subtitle">Welcome to Sky Feed Connect!</p>
       <form onSubmit={handleSubmit} className="sign-up-form">
+        <input
+          type="text"
+          name="username"
+          placeholder="Full Name"
+          required
+          value={userDetails.username}
+          onChange={handleChange}
+        />
         <input
           type="email"
           name="email"
@@ -65,6 +91,11 @@ const SignUpPage = () => {
           Sign Up
         </button>
       </form>
+      {error && (
+        <p className="error-message" style={{ color: "red" }}>
+          {error}
+        </p>
+      )}
       <p className="sign-in-redirect">
         Already have an Account?{" "}
         <span className="sign-in-link" onClick={handleSignInClick}>
