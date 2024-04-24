@@ -1,12 +1,11 @@
 * {
   box-sizing: border-box;
-  background-color: #ffffff;
 }
 
 body {
   font-family: "Encode Sans", sans-serif;
 }
-
+/*
 #page {
   display: flex;
   flex-direction: column;
@@ -26,7 +25,7 @@ body {
   align-items: center;
   height: 80px;
   margin: auto;
-}
+}*/
 
 #main-page .wrapper {
   width: 1250px;
@@ -123,4 +122,38 @@ body {
     display: flex;
     flex-direction: column;
   }
+}
+
+/*!############################################*/
+/* Estilos CSS para a grelha */
+#page {
+  display: grid;
+  grid-template-columns: auto 1fr 300px; /* 1ª coluna para o header, 2ª coluna para o main, 3ª coluna para o side */
+  grid-template-rows: auto 1fr; /* 1ª linha para o header, 2ª linha para o main */
+  height: 100vh; /* Altura total da viewport */
+  width: 100vw; /* Largura total da viewport */
+}
+
+.header-container {
+  grid-column: 1 / span 3; /* Ocupa todas as colunas */
+  grid-row: 1; /* Primeira linha */
+  height: fit-content;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+#main-page .wrapper {
+  grid-column: 2; /* Segunda coluna */
+  grid-row: 2; /* Segunda linha */
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.side {
+  grid-column: 3; /* Terceira coluna */
+  grid-row: 2; /* Segunda linha */
+  max-width: 300px;
+  background-color: #ccc;
+  padding: 20px;
 }

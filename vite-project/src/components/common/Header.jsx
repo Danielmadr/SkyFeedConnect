@@ -1,5 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import "@style/common/Header.css";
+import React from "react";
+import "../../style/common/Header.css"; // Verifique se o caminho do estilo está correto
+
+// Importe a imagem do logotipo usando um caminho relativo correto
+import logo from "../../assets/logo.png";
 
 const Header = ({ username, onLogout }) => {
   const navigate = useNavigate();
@@ -11,13 +15,28 @@ const Header = ({ username, onLogout }) => {
   };
 
   return (
-    <header className="header">
-      <h1>Welcome to Sky Feed Connect</h1>
-      <p>Por sua vida conosco é mais conectada</p>
-      <nav>
-        <span>{username}</span>
+    <header
+      className="header"
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "20px",
+      }}
+    >
+      <div className="site-title">
+        <div>
+          <img src={logo} style={{ height: "80px" }} alt="Logo" />
+        </div>
+        <div className="Title">
+          <h1>Welcome to Sky Feed Connect</h1>
+          <p>Porque sua vida conosco é mais conectada</p>
+        </div>
+      </div>
+      <div className="logout">
+        <span className="username">{username}</span>
         <button onClick={handleLogoutClick}>Logout</button>
-      </nav>
+      </div>
     </header>
   );
 };

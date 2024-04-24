@@ -13,6 +13,7 @@ const SignUpPage = () => {
     status: "A", // Definindo o status como "A" por padrão
   });
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false); // Estado para controle de envio
 
   const navigate = useNavigate();
 
@@ -25,10 +26,11 @@ const SignUpPage = () => {
     e.preventDefault();
 
     if (userDetails.password !== userDetails.confirmPassword) {
-      console.log("Passwords do not match.");
-      alert("Passwords do not match.");
+      setError("Passwords do not match.");
       return;
     }
+
+    setIsSubmitting(true); // Inicia o indicador de envio
 
     try {
       const response = await axios.post("http://localhost:8080/users/save", {
@@ -43,6 +45,8 @@ const SignUpPage = () => {
     } catch (error) {
       setError(error.response.data.message);
       console.error("Failed to register user:", error);
+    } finally {
+      setIsSubmitting(false); // Finaliza o indicador de envio, independentemente do resultado
     }
   };
 
@@ -87,8 +91,12 @@ const SignUpPage = () => {
           value={userDetails.confirmPassword}
           onChange={handleChange}
         />
-        <button type="submit" className="sign-up-button">
-          Sign Up
+        <button
+          type="submit"
+          className="sign-up-button"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Submitting..." : "Sign Up"}
         </button>
       </form>
       {error && (

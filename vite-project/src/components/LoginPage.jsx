@@ -8,6 +8,7 @@ const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false); // Estado para controle de envio
 
   const handleForgotPassword = () => {
     console.log("Forgot Password Clicked");
@@ -15,6 +16,7 @@ const LoginPage = () => {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
       const response = await axios.post("http://localhost:8080/auth/login", {
         username,
@@ -27,6 +29,8 @@ const LoginPage = () => {
       navigate("/main");
     } catch (error) {
       setError("Erro ao fazer login. Verifique suas credenciais!");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -53,8 +57,12 @@ const LoginPage = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" className="sign-in-button">
-          Sign In
+        <button
+          type="submit"
+          className="sign-in-button"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Signing In..." : "Sign In"}
         </button>
         <button
           type="button"
