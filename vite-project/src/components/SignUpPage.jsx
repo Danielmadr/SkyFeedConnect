@@ -10,10 +10,6 @@ const SignUpPage = () => {
     confirmPassword: "",
   });
 
-  const handleGoogleLogin = () => {
-    console.log("Sign up with Google");
-  };
-
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -26,8 +22,10 @@ const SignUpPage = () => {
     if (userDetails.password !== userDetails.confirmPassword) {
       console.log("Passwords do not match.");
       return;
+    } else {
+      navigate("/main");
+      console.log("Form submitted", userDetails);
     }
-    console.log("Form submitted", userDetails);
   };
 
   const handleSignInClick = () => {
@@ -38,12 +36,6 @@ const SignUpPage = () => {
     <div className="auth-container sign-up-container">
       <h1>Sign Up</h1>
       <p className="subtitle">Welcome to Sky Feed Connect!</p>
-      <button onClick={handleGoogleLogin} className="social-login google">
-        Sign up with Google
-      </button>
-      <div className="divider">
-        <span>Or with email</span>
-      </div>
       <form onSubmit={handleSubmit} className="sign-up-form">
         <input
           type="email"

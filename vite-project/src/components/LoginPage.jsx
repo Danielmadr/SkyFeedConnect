@@ -3,20 +3,25 @@ import "@style/LoginPage.css";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  const handleGoogleLogin = () => {
-    console.log("Sign In with Google");
-  };
-
   const handleForgotPassword = () => {
     console.log("Forgot Password Clicked");
   };
 
+  const navigate = useNavigate();
+
   const handleSignIn = (e) => {
-    e.preventDefault();
     console.log("Sign in with email and password");
+    if (isAuthenticated) {
+      e.preventDefault();
+      localStorage.setItem("userToken", "tokenAqui");
+      navigate("/main");
+    } else {
+      // Tratar o erro de autenticação
+      console.error("Falha no login");
+    }
   };
 
-  const navigate = useNavigate();
+  const isAuthenticated = true;
 
   const handleSignUpClick = () => {
     navigate("/signup");
@@ -26,12 +31,6 @@ const LoginPage = () => {
     <div className="auth-container sign-in-container">
       <h1>Sign In</h1>
       <p className="subtitle">Welcome to Sky Feed Connect!</p>
-      <button onClick={handleGoogleLogin} className="social-login google">
-        Sign in with Google
-      </button>
-      <div className="divider">
-        <span>Or with email</span>
-      </div>
       <form onSubmit={handleSignIn} className="sign-in-form">
         <input type="email" placeholder="Email" required />
         <input type="password" placeholder="Password" required />

@@ -19,6 +19,10 @@ body {
   background-color: #f2f2f2;
 }
 
+#root {
+  width: 100%;
+}
+
 .auth-container {
   background: #fff;
   padding: 40px;
@@ -32,6 +36,26 @@ body {
   flex-direction: column;
 }
 
+input,
+button {
+  width: 90%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.sign-in-redirect,
+.sign-in-link {
+  color: #666;
+  cursor: pointer;
+}
+
+.sign-in-link {
+  margin-top: 2em;
+  color: #007bff;
+}
+
 h1 {
   color: #333;
   margin-bottom: 0.5em;
@@ -39,23 +63,7 @@ h1 {
 
 .subtitle {
   color: #666;
-  margin-bottom: 1em;
-}
-
-.social-login {
-  display: block;
-  width: 90%;
-  margin: 0 auto 20px;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  font-size: 1em;
-  color: #fff;
-  cursor: pointer;
-}
-
-.social-login.google {
-  background-color: #db4437;
+  margin-bottom: 60px;
 }
 
 @media (max-width: 768px) {
