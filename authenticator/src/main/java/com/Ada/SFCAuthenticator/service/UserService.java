@@ -4,7 +4,6 @@ import com.Ada.SFCAuthenticator.dto.AuthenticationDTO;
 import com.Ada.SFCAuthenticator.dto.UserRequestDTO;
 import com.Ada.SFCAuthenticator.dto.VerifyMessage;
 import com.Ada.SFCAuthenticator.model.User;
-import com.Ada.SFCAuthenticator.dto.UserResponseDTO;
 import com.Ada.SFCAuthenticator.model.UserVerifier;
 import com.Ada.SFCAuthenticator.model.enums.UserStatus;
 import com.Ada.SFCAuthenticator.model.exceptions.*;
@@ -91,26 +90,26 @@ public class UserService {
     String emailContent = String.format("""
             <html>
             <body style="font-family: Arial, sans-serif;">
-               
+            
             <h2>Olá!</h2>
-                         
+            
             <br/>
-                         
+            
             <p>Obrigado por se cadastrar. Para ativar sua conta, clique no link abaixo:</p>
-                        
+            
             <a href="%s" style="padding: 10px 20px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 5px; margin-botton:10px;">Ativar Conta</a>
-                        
+            
             <br/>
             <br/>
-                        
+            
             <p>Se o botão acima não funcionar, copie e cole o seguinte URL em seu navegador:</p>
             <p>%s</p>
-                        
+            
             <br/>
-                                 
+            
             <p>Obrigado,</p>
             <p>Equipe SkyFeed</p>
-                        
+            
             </body>
             </html>
             """, activationLink, activationLink);
@@ -167,20 +166,20 @@ public class UserService {
             <body style="font-family: Arial, sans-serif;">
 
             <h2>Olá!</h2>
-                        
+            
             <p>Reenviamos este e-mail porque o link de ativação anterior expirou.</p>
             <p>Clique no link abaixo para ativar sua conta:</p>
-                        
+            
             <a href="%s" style="padding: 10px 20px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 5px;">Ativar Conta</a>
-                        
+            
             <p>Se o botão acima não funcionar, copie e cole o seguinte URL em seu navegador:</p>
             <p>%s</p>
-                        
+            
             <p>Este link expirará em 15 minutos.</p>
-                        
+            
             <p>Obrigado,</p>
             <p>Sua Equipe</p>
-                        
+            
             </body>
             </html>
             """, activationLink, activationLink);
@@ -191,12 +190,5 @@ public class UserService {
       logger.error("Falha ao enviar o email de verificação", e);
       throw new EmailSendingException();
     }
-  }
-
-  public UserResponseDTO findByLogin(String login) { //todo para teste
-    User user = userRepository.findByLogin(login).orElseThrow(
-            () -> new UserNotFoundException(login)
-    );
-    return new UserResponseDTO(user);
   }
 }
