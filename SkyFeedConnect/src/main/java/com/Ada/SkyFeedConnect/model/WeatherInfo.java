@@ -15,6 +15,11 @@ public class WeatherData {
           Double temp,
           @JsonProperty("feels_like")
           Double feelsLike
+          /*@JsonProperty("temp")
+          String name*/
+          /*@JsonProperty("temp")
+          String[] weather*/
+
   ){
   }
 }
