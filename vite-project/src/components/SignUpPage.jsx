@@ -56,7 +56,7 @@ const SignUpPage = () => {
 
   return (
     <div className="auth-container sign-up-container">
-      <h1>Sign Up</h1>
+      <h1 className="title-sign">Sign Up</h1>
       <p className="subtitle">Welcome to Sky Feed Connect!</p>
       <form onSubmit={handleSubmit} className="sign-up-form">
         <input

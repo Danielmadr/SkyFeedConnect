@@ -37,8 +37,12 @@ input,
 button {
   width: 90%;
   padding: 12px;
+  margin: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+button {
   cursor: pointer;
 }
 

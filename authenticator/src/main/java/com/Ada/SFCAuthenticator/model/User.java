@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
-import com.Ada.SFCAuthenticator.dto.UserResponseDTO;
-
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
