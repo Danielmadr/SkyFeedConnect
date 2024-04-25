@@ -40,7 +40,7 @@ const LoginPage = () => {
 
   return (
     <div className="auth-container sign-in-container">
-      <h1>Sign In</h1>
+      <h1 className="title-sign">Sign In</h1>
       <p className="subtitle">Welcome to Sky Feed Connect!</p>
       <form onSubmit={handleSignIn} className="sign-in-form">
         <input

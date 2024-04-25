@@ -71,6 +71,12 @@
   grid-area: B;
 }
 
+  #page {
+    width: auto;
+    height: auto;
+  }
+*/
+
 .news-feed {
   grid-area: A;
 }

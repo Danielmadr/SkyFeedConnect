@@ -1,5 +1,6 @@
 package com.Ada.SFCAuthenticator.service;
 
+import com.Ada.SFCAuthenticator.model.exceptions.InvalidCredentialsException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -41,8 +42,7 @@ public class AuthService {
       return new AccessDTO(token);
 
     } catch (BadCredentialsException e) {
-      // todo Login ou senha invalidos
-      return new AccessDTO(e.getMessage());
+      throw new InvalidCredentialsException();
     }
   }
 }

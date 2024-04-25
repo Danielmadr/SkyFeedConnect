@@ -8,19 +8,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserDetailsImpl implements UserDetails {
 
-  private final Long id;
   private final String username;
 
-  public UserDetailsImpl(Long id, String username) {
+  public UserDetailsImpl(String username) {
     super();
-    this.id = id;
     this.username = username;
   }
 
   public static UserDetailsImpl build(User user) {
 
     return new UserDetailsImpl(
-            user.getId(),
             user.getUsername());
   }
 

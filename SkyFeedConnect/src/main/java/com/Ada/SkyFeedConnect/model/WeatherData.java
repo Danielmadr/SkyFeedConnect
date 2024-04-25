@@ -1,34 +1,20 @@
 package com.Ada.SkyFeedConnect.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 
+
+@Getter
+@Setter
 public class WeatherData {
-    @JsonProperty("main")
-    private TemperatureInfo temperatureInfo;
+  @JsonProperty("main")
+  private TemperatureInfo temperatureInfo;
 
-    public TemperatureInfo getTemperatureInfo() {
-        return temperatureInfo;
-    }
-
-    public static class TemperatureInfo {
-        private double temp;
-        @JsonProperty("feels_like")
-        private double feelsLike;
-
-        public double getTemp() {
-            return temp;
-        }
-
-        public void setTemp(double temp) {
-            this.temp = temp;
-        }
-
-        public double getfeelsLike() {
-            return feelsLike;
-        }
-
-        public void setfeels_like(double feels_like) {
-            this.feelsLike = feels_like;
-        }
-    }
+  public record TemperatureInfo (
+          Double temp,
+          @JsonProperty("feels_like")
+          Double feelsLike
+  ){
+  }
 }

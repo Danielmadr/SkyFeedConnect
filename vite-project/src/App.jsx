@@ -30,6 +30,13 @@ const App = () => {
     setIsAuthenticated(false);
   };
 
+  /*const handleLogout = () => {
+    // Função para fazer logout e limpar o estado de autenticação
+    localStorage.removeItem("userToken");
+    setIsAuthenticated(false);
+  };
+*/
+
   return (
     <Router>
       <Routes>

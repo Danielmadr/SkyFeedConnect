@@ -36,6 +36,11 @@ public class GlobalHandlerException {
     return ResponseEntity.status(409).body(new ExceptionMessageDTO(ex.getMessage()));
   }
 
+  @ExceptionHandler(InvalidCredentialsException.class)
+  public ResponseEntity<ExceptionMessageDTO> handleInvalidCredentialsException(InvalidCredentialsException ex) {
+    return ResponseEntity.status(401).body(new ExceptionMessageDTO(ex.getMessage()));
+  }
+
   @ExceptionHandler(Exception.class)
   public ResponseEntity<ExceptionMessageDTO> handleGenericException() {
     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

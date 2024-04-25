@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -48,8 +49,10 @@ public class WebSecurityConfig {
             .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/**").permitAll()
-                    .requestMatchers("/users/**").permitAll()
-                    .anyRequest().authenticated());//todo libera acesso geral, apenas para desenvolvimento olhar mais tarde
+                    .requestMatchers("/h2-console/**").permitAll()
+                    .anyRequest().authenticated()).headers(headers -> headers
+                    .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin) //Professor o problema estava na Liberação o X-Frame-Options para o console H2, agora está funcionando
+            );//todo libera acesso geral, apenas para desenvolvimento olhar mais tarde
 
     http.addFilterBefore(authFilterToken(), UsernamePasswordAuthenticationFilter.class);
 

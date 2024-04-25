@@ -18,11 +18,11 @@ public class EmailService {
 
   private final JavaMailSender javaMailSender;
 
-  public void sendEmail(String destiny, String subject, String body, HttpHeaders headers) throws MessagingException{
+  public void sendEmail(String destiny, String subject, String body, HttpHeaders headers) throws MessagingException {
     MimeMessage message = javaMailSender.createMimeMessage();
 
     // Use MimeMessageHelper para configurar o e-mail
-    MimeMessageHelper helper = new MimeMessageHelper(message,"UTF-8"); // true indica que o e-mail terá conteúdo HTML
+    MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8"); // true indica que o e-mail terá conteúdo HTML
 
     // Defina o remetente, destinatário, assunto e corpo do e-mail
     helper.setFrom(sender);
