@@ -1,36 +1,39 @@
+import PropTypes from "prop-types";
 import "@style/MainPage.css";
-import { useNavigate } from "react-router-dom";
-import Header from "@commoncomponents/Header";
-import Footer from "@commoncomponents/Footer";
 import WeatherWidget from "@components/WeatherSearch";
 import NewsFeed from "@components/NewsFeed";
+import logo from "../assets/logo.png";
 
-const MainPage = () => {
-  const username = "daniel";
-
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    // Tem que limpar o estado de autenticação, tokens, etc.
-    navigate("/login");
-  };
+const MainPage = ({ onLogout }) => {
+  const username = localStorage.getItem("userName") || "Usuário";
 
   return (
-    <div id="page">
-      <div className="logo">{/* Logotipo e cabeçalho aqui */}</div>
-      <Header username={username} onLogout={handleLogout} />
-      <div id="main-page" className="wrapper">
-        <div className="news-section">
-          <NewsFeed />
+    <body id="main-page">
+      <section id="header">
+        <div className="header-content">
+          <img src={logo} alt="Logo" className="logo" />
+          <div className="header-user-info">
+            <span className="username">{username}</span>
+            <a href="/login" onClick={onLogout} className="logout-link">
+              Logout
+            </a>
+          </div>
         </div>
-        <div className="weather-section">
-          <WeatherWidget />
+      </section>
+
+      <section id="principal">
+        <div className="personal-feed">
+          <NewsFeed className="news-feed" />
+          <div className="vertical-divider"></div>
+          <WeatherWidget className="weather-widget" />
         </div>
-      </div>
-      <hr className="bottom-hr" />
-      <Footer />
-    </div>
+      </section>
+    </body>
   );
+};
+
+MainPage.propTypes = {
+  onLogout: PropTypes.func.isRequired,
 };
 
 export default MainPage;

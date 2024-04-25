@@ -1,0 +1,31 @@
+#weather > h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#weather #search-form form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+#weather #tempo-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#weather #tempo-info .tempo-data h2 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+#weather #tempo-info .tempo-data span {
+  font-size: 3rem;
+  font-weight: bold;
+}
