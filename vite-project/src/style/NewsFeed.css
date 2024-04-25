@@ -1,0 +1,123 @@
+.news-feed {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  background-color: rgb(179, 181, 182);
+}
+
+.news-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.news-feed .main-new a {
+  text-decoration: none;
+}
+
+.news-feed .main-new h1 {
+  width: 624px;
+  height: 201px;
+  font-weight: 700;
+  line-height: 60px;
+  color: #c4160c;
+  font-size: 52px;
+  padding-top: 3px;
+  margin-bottom: 20px;
+}
+
+.news-feed .main-new h3 {
+  width: 625px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 32px;
+  color: #303134;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #ebedef;
+}
+
+.news-feed .top-notice .notice + .notice {
+  padding-left: 24px;
+}
+
+.news-feed .top-notice {
+  width: 625px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #ebedef;
+  display: flex;
+}
+
+.news-feed .under-notice {
+  width: 638.5px;
+  padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-feed .under-notice img {
+  width: 193px;
+  height: 110px;
+  border-radius: 12px;
+}
+
+.news-feed .under-notice a {
+  text-decoration: none;
+}
+
+.news-feed .under-notice h4 {
+  width: 192px;
+  height: 19px;
+  color: #c4170c;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17.5px;
+  padding-top: 11px;
+}
+
+.news-feed .under-notice h6 {
+  display: none;
+  overflow: hidden;
+}
+
+.news-feed .under-notice h2 {
+  width: 194px;
+  height: 84px;
+  color: #2f3134;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  margin-top: 16px;
+}
+
+.news-feed .under-notice p {
+  width: 174px;
+  height: 42.5px;
+
+  color: #2f3134;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.news-feed .under-notice {
+  width: 174px;
+  height: 42.5px;
+
+  color: #2f3134;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.news-feed .bot-notice {
+  display: flex;
+  margin-top: 25px;
+}
+
+.news-feed .bot-notice .notice + .notice {
+  padding-left: 24px;
+  padding-bottom: 46px;
+}

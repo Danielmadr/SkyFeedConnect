@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Encode Sans", sans-serif;
+}
+/*
+#page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.logoimage {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  margin: auto;
+}*/
+
+/*#main-page .wrapper {
+  width: 1250px;
+  display: grid;
+  grid-template-columns: 54% 46%;
+  grid-template-areas: "A B";
+  margin: auto;
+}
+
+.news-section {
+  grid-area: A;
+  flex: 3;
+}
+
+.weather-section {
+  grid-area: B;
+  flex: 1;
+}
+  #page {
+    width: auto;
+    height: auto;
+  }
+*/
+
+@media screen and (max-width: 600px) {
+  html {
+    width: auto;
+    height: auto;
+  }
+
+  body {
+    box-sizing: border-box;
+    display: block;
+    overflow-x: hidden;
+  }
+
+  #header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .logo {
+    display: none;
+    overflow: hidden;
+  }
+
+  .logoimage {
+    display: flex;
+    align-items: center;
+    height: 80px;
+  }
+
+  #header .mobile {
+    display: flex;
+    width: 100%;
+    overflow: auto;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-top: 20px;
+    margin-bottom: 36px;
+    border-top: 1px solid #ebedef;
+    border-bottom: 1px solid #ebedef;
+  }
+
+  #header .mobile a {
+    text-decoration: none;
+    height: 40px;
+    font-size: 19px;
+    font-weight: bold;
+    display: flex;
+  }
+
+  #main-page {
+    padding-left: 0;
+  }
+
+  #main-page .wrapper {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /*#main-page .news-section {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }*/
+
+  #main-page .weather-section {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/*!############################################*/
+/* Estilos CSS para a grelha */
+#page {
+  display: grid;
+  grid-template-columns: auto 0 300px; /* 1ª coluna para o header, 2ª coluna para o main, 3ª coluna para o side */
+  grid-template-rows: auto 1fr; /* 1ª linha para o header, 2ª linha para o main */
+  height: 100vh; /* Altura total da viewport */
+  width: 100vw; /* Largura total da viewport */
+}
+
+.header-container {
+  grid-column: 1 / span 3; /* Ocupa todas as colunas */
+  grid-row: 1; /* Primeira linha */
+  height: fit-content;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+#main-page .wrapper {
+  grid-column: 2; /* Segunda coluna */
+  grid-row: 2; /* Segunda linha */
+  background-color: #333;
+  padding: 20px;
+}
+
+.side {
+  grid-column: 3; /* Terceira coluna */
+  grid-row: 2; /* Segunda linha */
+  max-width: 300px;
+  background-color: #ccc;
+  padding: 20px;
+}
