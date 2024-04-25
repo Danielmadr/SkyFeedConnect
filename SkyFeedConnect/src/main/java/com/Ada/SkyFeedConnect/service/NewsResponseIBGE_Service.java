@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class NewsResponseIBGE_Service {
@@ -19,25 +18,24 @@ public class NewsResponseIBGE_Service {
     RestTemplate restTemplate = new RestTemplate();
     NewsResponseIBGE response = restTemplate.getForObject(url, NewsResponseIBGE.class);
 
-    List<NewsResponseIBGE_DTO.NewsItemDTO> newsItemList = new ArrayList<>();
+    NewsResponseIBGE_DTO newsItemList = new NewsResponseIBGE_DTO(new ArrayList<>());
 
-    for (NewsResponseIBGE.NewsItem item : response.getItems()) {
-      String imageIntroduction = "https://agenciadenoticias.ibge.gov.br/" + getImageIntroduction(item);
-      NewsResponseIBGE_DTO.NewsItemDTO newsItemDTO = new NewsResponseIBGE_DTO.NewsItemDTO(item.getData_publicacao(),
-              item.getTitulo(), item.getIntroducao(), item.getLink(), imageIntroduction);
-      newsItemList.add(newsItemDTO);
+    if (response != null) {
+      for (NewsResponseIBGE.NewsItem item : response.getItems()) {
+        String imageIntroduction = getImageIntroduction(item.getImagens());
+        item.setImagens(imageIntroduction);
+        newsItemList.newsList().add(item);
+      }
     }
-
-    return new NewsResponseIBGE_DTO(newsItemList);
+    return newsItemList;
   }
 
-  private String getImageIntroduction(NewsResponseIBGE.NewsItem response) {
-    String imageIntroduction = "";
-    String images = response.getImagens();
+  private String getImageIntroduction(String images) {
+    String imageIntroduction;
     String[] imageArray = images.split(",");
     imageIntroduction = imageArray[0].split("\"")[3];
     imageIntroduction = imageIntroduction.replaceAll("\\\\", "");
-    return imageIntroduction;
+    return "https://agenciadenoticias.ibge.gov.br/" + imageIntroduction;
   }
 }
 

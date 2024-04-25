@@ -6,16 +6,15 @@ import lombok.Setter;
 
 
 @Getter
+@Setter
 public class WeatherData {
   @JsonProperty("main")
   private TemperatureInfo temperatureInfo;
 
-
-  @Getter
-  @Setter
-  public static class TemperatureInfo {
-    private double temp;
-    @JsonProperty("feels_like")
-    private double feelsLike;
+  public record TemperatureInfo (
+          Double temp,
+          @JsonProperty("feels_like")
+          Double feelsLike
+  ){
   }
 }
