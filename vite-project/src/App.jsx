@@ -30,25 +30,28 @@ const App = () => {
     setIsAuthenticated(false);
   };
 
-  /*const handleLogout = () => {
-    // Função para fazer logout e limpar o estado de autenticação
-    localStorage.removeItem("userToken");
-    setIsAuthenticated(false);
-  };
-*/
-
   return (
     <Router>
       <Routes>
         <Route
           path="/"
           element={
-            <Navigate replace to={isAuthenticated ? "/main" : "/login"} />
+            <Navigate replace to={!isAuthenticated ? "/main" : "/login"} />
+            /*!Retirar o ! para não permitir entrar na main page*/
           }
         />
         <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/main" element={<MainPage onLogout={handleLogout} />} />
+        <Route
+          path="/main"
+          element={
+            isAuthenticated ? (
+              <MainPage onLogout={handleLogout} />
+            ) : (
+              <Navigate replace to="/login" />
+            )
+          }
+        />
       </Routes>
     </Router>
   );
