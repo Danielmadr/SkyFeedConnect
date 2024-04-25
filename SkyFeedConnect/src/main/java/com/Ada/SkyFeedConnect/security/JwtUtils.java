@@ -17,21 +17,22 @@ public class JwtUtils {
   @Value("${project.jwtSecret}")//chave de segurança definida nas proproedades do projeto.
   private String jwtSecret;
 
-  @Value("${project.jwtExpirationMs}")
-  private int jwtExpirationMs;//tempo de expiração do "token", definido nas propriedades do projeto.
+  /*@Value("${project.jwtExpirationMs}")
+  private int jwtExpirationMs;//tempo de expiração do "token", definido nas propriedades do projeto.*/
 
-  public String generateTokenFromUserDetailsImpl(UserDetailsImpl userDetails) {
+  /*public String generateTokenFromUserDetailsImpl(UserDetailsImpl userDetails) {
     return Jwts.builder()
             .subject(userDetails.getUsername())
             .issuedAt(new Date())
             .expiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
             .signWith(getSigningKey())
             .compact();
-  }
+  }*/
 
   public String extractUsernameFromJwtToken(String token) {
     return extractClaimFromJwtToken(token, Claims::getSubject);
   }
+
   public boolean validateJwtToken(String token) {
     try {
       Jwts.parser().setSigningKey(getSigningKey()).build().parseClaimsJws(token);
@@ -46,6 +47,7 @@ public class JwtUtils {
       throw new RuntimeException("Token inválido", e);
     }
   }
+
   private <T> T extractClaimFromJwtToken(String token, Function<Claims, T> claimsResolver) {
 
     Claims claims = Jwts.parser().setSigningKey(getSigningKey()).build().parseClaimsJws(token).getBody();
