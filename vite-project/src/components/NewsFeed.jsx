@@ -1,86 +1,48 @@
 import "@style/NewsFeed.css";
 import img1 from "../assets/alem-do-presidente.jpeg";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const newsItems = [
-  {
-    id: 1,
-    subtitle:
-      "Vacinados entrarão nos EUA sem quarentena a partir de 8 de novembro",
-    summary:
-      "Ministros ‘lavam as mãos’ sobre Bolsonaro não se vacinar, relata blog Bandeiras em frente ao Congresso lembram 600 mil brasileiros mortos",
-    link: "https://link-para-noticia-principal.com",
-  },
-  {
-    id: 2,
-    title: "Além do presidente",
-    subtitle:
-      "Vacinados entrarão nos EUA sem quarentena a partir de 8 de novembro",
-    summary:
-      "Ministros 'lavam as mãos' sobre Bolsonaro não se vacinar, relata blog",
-    imageUrl: img1,
-    link: "https://link-para-noticia-principal.com",
-  },
-  {
-    id: 3,
-    title: "Além do presidente",
-    subtitle:
-      "Vacinados entrarão nos EUA sem quarentena a partir de 8 de novembro",
-    summary:
-      "Ministros 'lavam as mãos' sobre Bolsonaro não se vacinar, relata blog",
-    imageUrl: img1,
-    link: "https://link-para-noticia-principal.com",
-  },
-  {
-    id: 4,
-    title: "Além do presidente",
-    subtitle:
-      "Vacinados entrarão nos EUA sem quarentena a partir de 8 de novembro",
-    summary:
-      "Ministros 'lavam as mãos' sobre Bolsonaro não se vacinar, relata blog",
-    imageUrl: img1,
-    link: "https://link-para-noticia-principal.com",
-  },
-  {
-    id: 5,
-    title: "Além do presidente",
-    subtitle:
-      "Vacinados entrarão nos EUA sem quarentena a partir de 8 de novembro",
-    summary:
-      "Ministros 'lavam as mãos' sobre Bolsonaro não se vacinar, relata blog",
-    link: "https://link-para-noticia-principal.com",
-  },
-  {
-    id: 6,
-    title: "Além do presidente",
-    subtitle:
-      "Vacinados entrarão nos EUA sem quarentena a partir de 8 de novembro",
-    summary:
-      "Ministros 'lavam as mãos' sobre Bolsonaro não se vacinar, relata blog",
-    link: "https://link-para-noticia-principal.com",
-  },
-  {
-    id: 7,
-    title: "Além do presidente",
-    subtitle:
-      "Vacinados entrarão nos EUA sem quarentena a partir de 8 de novembro",
-    summary:
-      "Ministros 'lavam as mãos' sobre Bolsonaro não se vacinar, relata blog",
-    link: "https://link-para-noticia-principal.com",
-  },
-];
 
 const NewsFeed = () => {
+  // const[title, setTitle] = useState("")
+  // const[subtitle, setSubtitle] = useState("")
+  // const[summary, setSummary] = useState("")
+  // const[link, setLink] = useState("")
+  const [newsItems,setNewsItems] = useState([]);
+  
+  const JWT_TOKEN = localStorage.getItem("userToken");
+
+  useEffect(() => {
+    const fetchNews = async () => {
+    try{
+      const response = await axios.get(
+        `http://localhost:3333/newsIBGE/7`,
+  
+        {
+          headers: {
+            Authorization: `Bearer ${JWT_TOKEN}`,
+          },
+        }
+      );
+      setNewsItems(response.data.newsList);
+      
+    }catch (error) {
+      console.error("Erro ao buscar notícias:", error);
+    }
+  };
+  fetchNews();
+  }, []);
+
   return (
     <div className="news-feed">
+
       <div className="main-news-item">
-        <h1 className="main-news-subtitle">{newsItems[0].subtitle}</h1>
-        <p className="main-news-summary">{newsItems[0].summary}</p>
-        {newsItems[0].imageUrl && (
-          <img
-            src={newsItems[0].imageUrl}
-            alt="Main news"
-            className="main-news-image"
-          />
+        {newsItems.length > 0 && (
+          <>
+        <h1 className="main-news-subtitle">{newsItems[0].titulo}</h1>
+        <p className="main-news-summary">{newsItems[0].introducao}</p> 
+        </>
         )}
       </div>
 
@@ -88,16 +50,12 @@ const NewsFeed = () => {
         {newsItems.slice(1, 4).map((news) => (
           <div key={news.id} className="secondary-news-item">
             {news.imageUrl && (
-              <img
-                src={news.imageUrl}
-                alt={news.title}
-                className="secondary-news-image"
-              />
+              <img src={news.imagens} alt={news.titulo} className="secondary-news-image" />
             )}
             <div className="secondary-news-text">
-              <h2 className="secondary-news-title">{news.title}</h2>
-              <h3 className="secondary-news-subtitle">{news.subtitle}</h3>
-              <p className="secondary-news-summary">{news.summary}</p>
+              <h2 className="secondary-news-title">{news.editorias}</h2>
+              <h3 className="secondary-news-subtitle">{news.titulo}</h3>
+              <p className="secondary-news-summary">{news.introducao}</p>
             </div>
           </div>
         ))}
@@ -107,9 +65,9 @@ const NewsFeed = () => {
         {newsItems.slice(4).map((news) => (
           <div key={news.id} className="additional-news-item">
             <div className="additional-news-text">
-              <h2 className="additional-news-title">{news.title}</h2>
-              <h3 className="additional-news-subtitle">{news.subtitle}</h3>
-              <p className="additional-news-summary">{news.summary}</p>
+            <h2 className="secondary-news-title">{news.editorias}</h2>
+              <h3 className="secondary-news-subtitle">{news.titulo}</h3>
+              <p className="secondary-news-summary">{news.introducao}</p>
             </div>
           </div>
         ))}
