@@ -49,6 +49,7 @@ public class WebSecurityConfig {
             .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/**").permitAll()
+                    .requestMatchers("/users/**").permitAll()
                     .requestMatchers("/h2-console/**").permitAll()
                     .anyRequest().authenticated()).headers(headers -> headers
                     .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin) //Professor o problema estava na Liberação o X-Frame-Options para o console H2, agora está funcionando

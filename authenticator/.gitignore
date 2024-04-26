@@ -21,3 +21,8 @@ target/
 
 ### VS Code ###
 .vscode/
+
+##Docker##
+.dockerignore
+compose.yaml
+Dockerfile
