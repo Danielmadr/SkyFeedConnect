@@ -3,14 +3,12 @@ package com.Ada.SkyFeedConnect.controller;
 import com.Ada.SkyFeedConnect.dto.NewsResponseIBGE_DTO;
 import com.Ada.SkyFeedConnect.service.NewsResponseIBGE_Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @RequestMapping("/newsIBGE")
+@CrossOrigin
 public class NewsIBGEController {
 
   private final NewsResponseIBGE_Service newsIBGEService;

@@ -5,8 +5,7 @@ import NewsFeed from "@components/NewsFeed";
 import logo from "../assets/logo2.png";
 import DateTimeWidget from "./DateTimeWidget";
 import { RxExit } from "react-icons/rx";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+
 
 const MainPage = ({ onLogout }) => {
   const username = localStorage.getItem("userName") || "Usuário";
