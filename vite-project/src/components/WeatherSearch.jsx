@@ -1,12 +1,13 @@
 import { useState } from "react";
-import "@style/WeatherSearch.css";
 import axios from "axios";
+import "../style/WeatherSearch.css";
 
 const WeatherWidget = () => {
   const [local, setLocal] = useState("");
   const [weatherInfo, setWeatherInfo] = useState(null);
+  const [error, setError] = useState("");
   const JWT_TOKEN =
-    "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb2dlcmlvbmpAZ21haWwuY29tIiwiaWF0IjoxNzE0MDg2Mzg2LCJleHAiOjE3MTQwODcyODZ9.jk3657plTSVJwIlrvshFQhuYNVSsZHrdd3VSxe4TFbJAZE4YkJcxmkgWZkMN7UgRNUR332TwQoT0g4Ffj4sFVQ";
+    "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb2dlcmlvbmpAZ21haWwuY29tIiwiaWF0IjoxNzE0MDkzNTgwLCJleHAiOjE3MTQwOTQ0ODB9.lPCHmqD07RykTw4QRkU58o1HFDSq0t1QCxzzX9xE_Qwy2HcqL3D0dBe2tOemPx6vuDXxk9-Wa_vW1UnX0NTxZQ";
   // localStorage.getItem("userToken");
 
   const handleFormSubmit = async (event) => {
@@ -28,9 +29,6 @@ const WeatherWidget = () => {
         }
       );
 
-      //const data = await response.json();
-      console.log(response.data);
-
       const weatherData = {
         temp: Math.round(response.data.temp),
         local: response.data.name,
@@ -38,8 +36,10 @@ const WeatherWidget = () => {
       };
 
       setWeatherInfo(weatherData);
-    } catch (err) {
-      console.log("Aconteceu um erro inesperado na API.", err);
+    } catch (erro) {
+      const imageUrl = `https://http.cat/${erro.response.data.status}`;
+      setError(imageUrl);
+      console.log("Aconteceu um erro inesperado na API.", erro);
     }
   };
   return (
@@ -47,7 +47,7 @@ const WeatherWidget = () => {
       <div id="weather-content">
         <h1 className="title">Condiçoes do Tempo</h1>
         <section id="search-form">
-          <form>
+          <form onSubmit={handleFormSubmit}>
             <input
               className="inputWidget"
               type="text"
@@ -56,10 +56,11 @@ const WeatherWidget = () => {
               placeholder="Insira o local..."
               onChange={(event) => setLocal(event.target.value)}
             />
-            <button id="button-local" onClick={handleFormSubmit}>
+            <button id="button-local" type="submit">
               Buscar Clima
             </button>
           </form>
+          {error && <img src={error} alt="Erro" style={{ width: "100%" }} />}
         </section>
         <section id="tempo-info">
           {weatherInfo && (
@@ -67,7 +68,7 @@ const WeatherWidget = () => {
               <h2>{weatherInfo.local}</h2>
               <div className="tempo-data-info">
                 <span>{weatherInfo.temp} ºC</span>
-                <img src={weatherInfo.icon} alt="" />
+                <img src={weatherInfo.icon} alt="tempo" />
               </div>
             </div>
           )}

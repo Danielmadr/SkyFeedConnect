@@ -22,7 +22,8 @@
   margin: auto;
   margin-top: 12px;
   margin-bottom: 12px;
-  width: 2000px;
+  width: 1240px;
+  padding: 5px;
   background-color: white;
 }
 
@@ -53,16 +54,21 @@
 }
 
 #principal .personal-feed {
-  width: 2000px;
+  background-color: white;
+  width: 1240px;
   display: grid;
   grid-template-columns: 75% 25%;
   grid-template-areas: "A B";
+  justify-items: center;
   margin: auto;
 }
 
 .vertical-divider {
-  width: 100%;
-  background-color: #ccc;
+  width: 300px;
+  padding: 5px;
+  background-color: white;
+  border-left: #999 1px solid;
+  align-items: center;
 }
 
 .weather-widget {
@@ -73,6 +79,7 @@
   width: auto;
   height: auto;
 }
-*/ .news-feed {
+
+.news-feed {
   grid-area: A;
 }

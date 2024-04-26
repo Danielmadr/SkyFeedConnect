@@ -1,79 +1,65 @@
 #weather-widget {
-  background-color: #222222;
-  color: white;
-  height: 100vh;
-
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 #weather-content {
   padding: 2rem;
-  max-width: 800px;
-  background-color: #333333;
+  background-color: #333;
   border-radius: 10px;
+  color: white;
 }
 
-#weather-content > h1 {
-  background-color: #333333;
+#weather-content .title {
   font-size: 2.5rem;
   margin-bottom: 2rem;
 }
 
-#weather-content #search-form > form {
+#search-form {
+  margin-bottom: 1rem;
+}
+
+#search-form form {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
   align-items: center;
-  background-color: #333333;
 }
 
-/*#weather-widget #search-form input {
-  flex: 1;
-  height: 32px;
-  border-radius: 10px;
+.inputWidget {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
   border: none;
-  padding: 0 1rem;
-  font-size: 16px;
+  margin-bottom: 0.5rem;
 }
 
-#weather-widget #search-form button {
+#button-local {
   background-color: darkgreen;
   color: white;
+  width: 100%;
   border: none;
-  padding: 0rem 1rem;
-  height: 32px;
-  border-radius: 10px;
-}*/
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
 
-#weather-content #tempo-info {
+#tempo-info {
   text-align: center;
-  justify-content: space-between;
-  background-color: #333333;
 }
 
-#weather-content #tempo-info .tempo-data .tempo-data-info {
-  align-items: center;
-  justify-content: space-between;
-  background-color: #333333;
-}
-
-#weather-content #tempo-info .tempo-data > h2 {
-  font-size: 36px;
+.tempo-data > h2 {
+  font-size: 26px;
   font-weight: 400;
   margin: 0;
-  background-color: #333333;
 }
 
-#weather-content #tempo-info .tempo-data .tempo-data-info > img {
-  background-color: #333333;
+.tempo-data-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#weather-content #tempo-info .tempo-data .tempo-data-info > span {
+.tempo-data-info > span {
   font-size: 3rem;
   font-weight: bold;
-  background-color: #333333;
 }

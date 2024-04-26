@@ -1,0 +1,30 @@
+#datetime-widget {
+  margin-top: 1px;
+  display: flex;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
+
+#datetime-content {
+  padding: 0 1rem;
+  max-width: 300px;
+  background-color: #333;
+  border-radius: 10px;
+  color: white;
+}
+
+#date-time-info {
+  text-align: center;
+}
+
+.datetime-data > h2 {
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.datetime-data > h3 {
+  font-size: 24px;
+  font-weight: 300;
+  margin-top: 0;
+}

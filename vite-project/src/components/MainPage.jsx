@@ -3,6 +3,7 @@ import "@style/MainPage.css";
 import WeatherWidget from "@components/WeatherSearch";
 import NewsFeed from "@components/NewsFeed";
 import logo from "../assets/logo.png";
+import DateTimeWidget from "./DateTimeWidget";
 
 const MainPage = ({ onLogout }) => {
   const username = localStorage.getItem("userName") || "Usuário";
@@ -26,6 +27,7 @@ const MainPage = ({ onLogout }) => {
           <NewsFeed className="news-feed" />
           <div className="vertical-divider">
             <WeatherWidget className="weather-widget" />
+            <DateTimeWidget />
           </div>
         </div>
       </section>
