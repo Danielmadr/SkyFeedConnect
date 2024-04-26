@@ -5,14 +5,13 @@ import NewsFeed from "@components/NewsFeed";
 import logo from "../assets/logo2.png";
 import DateTimeWidget from "./DateTimeWidget";
 import { RxExit } from "react-icons/rx";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+
 
 const MainPage = ({ onLogout }) => {
   const username = localStorage.getItem("userName") || "Usuário";
 
   return (
-    <body id="main-page">
+    <body>
       <section id="header">
         <div className="header-content">
           <div className="header-logo">
@@ -30,7 +29,7 @@ const MainPage = ({ onLogout }) => {
           </div>
         </div>
       </section>
-
+      ,
       <section id="principal">
         <div className="personal-feed">
           <NewsFeed className="news-feed" />

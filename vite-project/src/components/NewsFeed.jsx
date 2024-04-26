@@ -26,7 +26,7 @@ const NewsFeed = () => {
         }
       );
       setNewsItems(response.data.newsList);
-      
+      console.log(response.data.newsList);
     }catch (error) {
       console.error("Erro ao buscar notícias:", error);
     }
@@ -38,6 +38,8 @@ const NewsFeed = () => {
     <div className="news-feed">
 
       <div className="main-news-item">
+        <h1 className="main-news-subtitle">{newsItems[0].subtitle}</h1>
+        <p className="main-news-summary">{newsItems[0].summary}</p>
         {newsItems.length > 0 && (
           <>
         <h1 className="main-news-subtitle">{newsItems[0].titulo}</h1>
@@ -49,8 +51,8 @@ const NewsFeed = () => {
       <div className="secondary-news-container">
         {newsItems.slice(1, 4).map((news) => (
           <div key={news.id} className="secondary-news-item">
-            {news.imageUrl && (
-              <img src={news.imagens} alt={news.titulo} className="secondary-news-image" />
+            {news.imagens && (
+              <img src= {news.imagens} alt={news.titulo} className="secondary-news-image"  />
             )}
             <div className="secondary-news-text">
               <h2 className="secondary-news-title">{news.editorias}</h2>
