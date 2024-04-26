@@ -45,11 +45,11 @@ const App = () => {
         <Route
           path="/main"
           element={
-            isAuthenticated ? (
-              <MainPage onLogout={handleLogout} />
-            ) : (
+            /*isAuthenticated ? (*/
+            <MainPage onLogout={handleLogout} />
+            /*) : (
               <Navigate replace to="/login" />
-            )
+            )*/
           }
         />
       </Routes>

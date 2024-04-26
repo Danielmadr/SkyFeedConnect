@@ -1,31 +1,79 @@
-#weather > h1 {
+#weather-widget {
+  background-color: #222222;
+  color: white;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#weather-content {
+  padding: 2rem;
+  max-width: 800px;
+  background-color: #333333;
+  border-radius: 10px;
+}
+
+#weather-content > h1 {
+  background-color: #333333;
   font-size: 2.5rem;
-  text-align: center;
   margin-bottom: 2rem;
 }
 
-#weather #search-form form {
+#weather-content #search-form > form {
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: 0.5rem;
   margin-bottom: 1rem;
   align-items: center;
+  background-color: #333333;
 }
 
-#weather #tempo-info {
-  display: flex;
+/*#weather-widget #search-form input {
+  flex: 1;
+  height: 32px;
+  border-radius: 10px;
+  border: none;
+  padding: 0 1rem;
+  font-size: 16px;
+}
+
+#weather-widget #search-form button {
+  background-color: darkgreen;
+  color: white;
+  border: none;
+  padding: 0rem 1rem;
+  height: 32px;
+  border-radius: 10px;
+}*/
+
+#weather-content #tempo-info {
+  text-align: center;
+  justify-content: space-between;
+  background-color: #333333;
+}
+
+#weather-content #tempo-info .tempo-data .tempo-data-info {
   align-items: center;
   justify-content: space-between;
+  background-color: #333333;
 }
 
-#weather #tempo-info .tempo-data h2 {
-  font-size: 18px;
+#weather-content #tempo-info .tempo-data > h2 {
+  font-size: 36px;
   font-weight: 400;
-  margin-bottom: 1rem;
+  margin: 0;
+  background-color: #333333;
 }
 
-#weather #tempo-info .tempo-data span {
+#weather-content #tempo-info .tempo-data .tempo-data-info > img {
+  background-color: #333333;
+}
+
+#weather-content #tempo-info .tempo-data .tempo-data-info > span {
   font-size: 3rem;
   font-weight: bold;
+  background-color: #333333;
 }

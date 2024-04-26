@@ -24,8 +24,12 @@ const LoginPage = () => {
       });
 
       const { token } = response.data;
-
       localStorage.setItem("userToken", token);
+
+      await axios.post("http://localhost:3333/newUser", {
+        username,
+      });
+
       navigate("/main");
     } catch (error) {
       setError("Erro ao fazer login. Verifique suas credenciais!");

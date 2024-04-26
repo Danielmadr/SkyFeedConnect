@@ -24,8 +24,9 @@ const MainPage = ({ onLogout }) => {
       <section id="principal">
         <div className="personal-feed">
           <NewsFeed className="news-feed" />
-          <div className="vertical-divider"></div>
-          <WeatherWidget className="weather-widget" />
+          <div className="vertical-divider">
+            <WeatherWidget className="weather-widget" />
+          </div>
         </div>
       </section>
     </body>

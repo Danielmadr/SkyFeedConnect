@@ -1,7 +1,7 @@
 package com.Ada.SkyFeedConnect.service;
 
 import com.Ada.SkyFeedConnect.dto.WeatherResponseDTO;
-import com.Ada.SkyFeedConnect.model.WeatherData;
+import com.Ada.SkyFeedConnect.model.WeatherInfo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -14,8 +14,8 @@ public class WeatherService {
   public WeatherResponseDTO getWeatherByCity(String city) {
     String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=metric";
     RestTemplate restTemplate = new RestTemplate();
-    WeatherData weatherData = restTemplate.getForObject(url, WeatherData.class);
+    WeatherInfo weatherData = restTemplate.getForObject(url, WeatherInfo.class);
 
-    return new WeatherResponseDTO(weatherData);
+    return WeatherResponseDTO.toDTO(weatherData);
   }
 }

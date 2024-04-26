@@ -1,25 +1,21 @@
 package com.Ada.SkyFeedConnect.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
-import lombok.Setter;
 
+import java.util.List;
 
 @Getter
-@Setter
-public class WeatherData {
-  @JsonProperty("main")
-  private TemperatureInfo temperatureInfo;
+public class WeatherInfo {
 
-  public record TemperatureInfo (
-          Double temp,
-          @JsonProperty("feels_like")
-          Double feelsLike
-          /*@JsonProperty("temp")
-          String name*/
-          /*@JsonProperty("temp")
-          String[] weather*/
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  private List<Weather> weather;
+  private Main main;
+  private String name;
 
-  ){
-  }
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public record Weather(String description, String icon) {}
+
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public record Main(double temp, double feels_like) {}
 }

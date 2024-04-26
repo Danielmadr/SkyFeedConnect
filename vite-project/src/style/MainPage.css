@@ -12,7 +12,7 @@
   display: flex;
   justify-content: space-between;
   background-color: white;
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #ccc;
 }
 
 .header-content {
@@ -52,7 +52,7 @@
   text-decoration: none;
 }
 
-#principal .personal-feed{
+#principal .personal-feed {
   width: 2000px;
   display: grid;
   grid-template-columns: 75% 25%;
@@ -61,22 +61,18 @@
 }
 
 .vertical-divider {
-  width: 1px;
-  background-color: #CCC;
-  align-self: stretch;
-  margin: 0 20px;
+  width: 100%;
+  background-color: #ccc;
 }
 
 .weather-widget {
   grid-area: B;
 }
 
-  #page {
-    width: auto;
-    height: auto;
-  }
-*/
-
-.news-feed {
+#page {
+  width: auto;
+  height: auto;
+}
+*/ .news-feed {
   grid-area: A;
 }
