@@ -76,9 +76,6 @@ const NewsFeed = () => {
       <div className="main-news-item">
         <h1 className="main-news-subtitle">{newsItems[0].subtitle}</h1>
         <p className="main-news-summary">{newsItems[0].summary}</p>
-        {newsItems[0].imageUrl && (
-          <img src={newsItems[0].imageUrl} alt="Main news" className="main-news-image" />
-        )}
       </div>
 
       <div className="secondary-news-container">

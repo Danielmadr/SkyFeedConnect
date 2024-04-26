@@ -9,7 +9,7 @@ const MainPage = ({ onLogout }) => {
   const username = localStorage.getItem("userName") || "Usuário";
 
   return (
-    <body id="main-page">
+    <body>
       <section id="header">
         <div className="header-content">
           <img src={logo} alt="Logo" className="logo" />
@@ -21,7 +21,7 @@ const MainPage = ({ onLogout }) => {
           </div>
         </div>
       </section>
-
+      ,
       <section id="principal">
         <div className="personal-feed">
           <NewsFeed className="news-feed" />
