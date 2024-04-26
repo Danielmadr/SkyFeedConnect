@@ -6,12 +6,12 @@ const WeatherWidget = () => {
   const [local, setLocal] = useState("");
   const [weatherInfo, setWeatherInfo] = useState(null);
   const [error, setError] = useState("");
-  const JWT_TOKEN =
-    "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb2dlcmlvbmpAZ21haWwuY29tIiwiaWF0IjoxNzE0MDkzNTgwLCJleHAiOjE3MTQwOTQ0ODB9.lPCHmqD07RykTw4QRkU58o1HFDSq0t1QCxzzX9xE_Qwy2HcqL3D0dBe2tOemPx6vuDXxk9-Wa_vW1UnX0NTxZQ";
-  // localStorage.getItem("userToken");
+  const JWT_TOKEN = localStorage.getItem("userToken");
+  /*"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb2dlcmlvbmpAZ21haWwuY29tIiwiaWF0IjoxNzE0MDkzNTgwLCJleHAiOjE3MTQwOTQ0ODB9.lPCHmqD07RykTw4QRkU58o1HFDSq0t1QCxzzX9xE_Qwy2HcqL3D0dBe2tOemPx6vuDXxk9-Wa_vW1UnX0NTxZQ";*/
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    setError(null);
 
     if (local.length < 3) {
       alert("O local precisa ter, pelo menos, três letras");
@@ -32,6 +32,7 @@ const WeatherWidget = () => {
       const weatherData = {
         temp: Math.round(response.data.temp),
         local: response.data.name,
+        description: response.data.description,
         icon: `https://openweathermap.org/img/wn/${response.data.icon}@2x.png`,
       };
 
@@ -67,8 +68,17 @@ const WeatherWidget = () => {
             <div className="tempo-data">
               <h2>{weatherInfo.local}</h2>
               <div className="tempo-data-info">
-                <span>{weatherInfo.temp} ºC</span>
-                <img src={weatherInfo.icon} alt="tempo" />
+                <img
+                  src={weatherInfo.icon}
+                  alt="tempo"
+                  style={{ width: "100px" }}
+                />
+                <div className="tempo-data-info-text">
+                  <span className="description">
+                    {weatherInfo.description},{" "}
+                  </span>
+                  <span>{weatherInfo.temp} ºC</span>
+                </div>
               </div>
             </div>
           )}

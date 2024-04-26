@@ -40,6 +40,10 @@ const SignUpPage = () => {
         status: userDetails.status,
       });
 
+      await axios.post("http://localhost:3333/newUser", {
+        username: userDetails.username,
+      });
+
       console.log("User registered successfully:", response.data);
       navigate("/login");
     } catch (error) {
