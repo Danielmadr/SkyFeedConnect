@@ -36,7 +36,7 @@ const App = () => {
         <Route
           path="/"
           element={
-            <Navigate replace to={!isAuthenticated ? "/main" : "/login"} />
+            <Navigate replace to={isAuthenticated ? "/main" : "/login"} />
             /*!Retirar o ! para não permitir entrar na main page*/
           }
         />

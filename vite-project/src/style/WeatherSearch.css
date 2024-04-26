@@ -1,8 +1,17 @@
 .weather-info {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
+}
+
+#weather-content {
+  padding: 2rem;
+  background-color: #333;
+  border-radius: 10px;
+  color: white;
+}
+
+#weather-content .title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .weather-info-text {
@@ -66,10 +75,15 @@
 
 .datetime-data h2, .datetime-data h3 {
   margin: 0;
-  padding: 5px 0;
 }
 
-.weather-widget, #datetime-widget {
-  max-width: 350px;
-  min-height: 200px;
+.tempo-data-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tempo-data-info > span {
+  font-size: 3rem;
+  font-weight: bold;
 }

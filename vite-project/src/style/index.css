@@ -7,6 +7,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 body {
@@ -18,5 +20,4 @@ body {
 
 #root {
   width: 100%;
-  background-color: #f2f2f2;
 }

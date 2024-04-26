@@ -1,6 +1,7 @@
 package com.Ada.SkyFeedConnect.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,18 +14,22 @@ public class NewsResponseIBGE {
   @Setter
   @Getter
   public static class NewsItem {
-    private final String data_publicacao;
-    private final String titulo;
-    private final String introducao;
+    @JsonProperty("editorias")
+    private final String title;
+    @JsonProperty("titulo")
+    private final String subtitle;
+    @JsonProperty("introducao")
+    private final String summary;
     private final String link;
-    private String imagens;
+    @JsonProperty("imagens")
+    private String imagem;
 
-    public NewsItem(String data_publicacao, String titulo, String introducao, String link, String imagens) {
-      this.data_publicacao = data_publicacao;
-      this.titulo = titulo;
-      this.introducao = introducao;
+    public NewsItem(String title, String subtitle, String summary, String link, String imagem) {
+      this.title = title;
+      this.subtitle = subtitle;
+      this.summary = summary;
       this.link = link;
-      this.imagens = imagens;
+      this.imagem = imagem;
     }
   }
 }
