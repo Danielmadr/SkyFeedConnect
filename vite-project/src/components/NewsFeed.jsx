@@ -37,6 +37,8 @@ const NewsFeed = () => {
     <div className="news-feed">
 
       <div className="main-news-item">
+        <h1 className="main-news-subtitle">{newsItems[0].subtitle}</h1>
+        <p className="main-news-summary">{newsItems[0].summary}</p>
         {newsItems.length > 0 && (
           <>
         <h1 className="main-news-subtitle">{newsItems[0].titulo}</h1>

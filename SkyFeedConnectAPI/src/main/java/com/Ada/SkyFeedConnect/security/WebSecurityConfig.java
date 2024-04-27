@@ -1,4 +1,4 @@
-package com.Ada.SFCAuthenticator.security;
+package com.Ada.SkyFeedConnect.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -15,9 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import com.Ada.SFCAuthenticator.security.jwt.AuthEntryPointJwt;
-import com.Ada.SFCAuthenticator.security.jwt.AuthFilterToken;
 
 @Configuration
 @EnableMethodSecurity
@@ -49,7 +46,6 @@ public class WebSecurityConfig {
             .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/**").permitAll()
-                    .requestMatchers("/users/**").permitAll()
                     .requestMatchers("/h2-console/**").permitAll()
                     .anyRequest().authenticated()).headers(headers -> headers
                     .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin) //Professor o problema estava na Liberação o X-Frame-Options para o console H2, agora está funcionando
@@ -59,4 +55,5 @@ public class WebSecurityConfig {
 
     return http.build();
   }
+
 }
