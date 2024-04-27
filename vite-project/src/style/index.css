@@ -1,70 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Encode Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
-  background-color: #f2f2f2;
 }
 
 #root {
   width: 100%;
-  background-color: #f2f2f2;
-}
-
-.auth-container {
-  background: #fff;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 100%;
-  max-width: 350px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-input,
-button {
-  width: 90%;
-  padding: 12px;
-  margin: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  cursor: pointer;
-}
-
-.sign-in-redirect,
-.sign-in-link {
-  color: #666;
-  cursor: pointer;
-}
-
-.sign-in-link {
-  margin-top: 2em;
-  color: #007bff;
-}
-
-.subtitle {
-  color: #666;
-  margin-bottom: 60px;
-}
-
-@media (max-width: 768px) {
-  .auth-container {
-    padding: 20px;
-    max-width: 90%;
-  }
 }

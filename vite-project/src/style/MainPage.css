@@ -1,158 +1,93 @@
-* {
-  box-sizing: border-box;
+#header {
+  width: 100%;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #333333;
+  border-bottom: 1px solid #ccc;
 }
 
-body {
-  font-family: "Encode Sans", sans-serif;
-}
-/*
-#page {
+.header-content {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   margin: auto;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  width: 1240px;
+  padding: 5px;
+  color: white;
+}
+
+.header-logo {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.header-title {
+  line-height: 0;
+}
+
+.header-title > h1 {
+  font-size: 36px;
 }
 
 .logo {
+  height: 90px;
+  cursor: pointer;
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-.logoimage {
+.header-user-info {
   display: flex;
   align-items: center;
-  height: 80px;
-  margin: auto;
-}*/
+}
 
-/*#main-page .wrapper {
-  width: 1250px;
+.username {
+  margin-right: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.logout-link {
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  align-items: center;
+  display: flex;
+  margin-right: 20px;
+}
+
+#principal .personal-feed {
+  background-color: white;
+  width: 1240px;
   display: grid;
-  grid-template-columns: 54% 46%;
+  grid-template-columns: 70% 30%;
   grid-template-areas: "A B";
+  justify-items: center;
   margin: auto;
 }
 
-.news-section {
-  grid-area: A;
-  flex: 3;
-}
-
-.weather-section {
-  grid-area: B;
-  flex: 1;
-}
-  #page {
-    width: auto;
-    height: auto;
-  }
-*/
-
-@media screen and (max-width: 600px) {
-  html {
-    width: auto;
-    height: auto;
-  }
-
-  body {
-    box-sizing: border-box;
-    display: block;
-    overflow-x: hidden;
-  }
-
-  #header {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .logo {
-    display: none;
-    overflow: hidden;
-  }
-
-  .logoimage {
-    display: flex;
-    align-items: center;
-    height: 80px;
-  }
-
-  #header .mobile {
-    display: flex;
-    width: 100%;
-    overflow: auto;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    padding-top: 20px;
-    margin-bottom: 36px;
-    border-top: 1px solid #ebedef;
-    border-bottom: 1px solid #ebedef;
-  }
-
-  #header .mobile a {
-    text-decoration: none;
-    height: 40px;
-    font-size: 19px;
-    font-weight: bold;
-    display: flex;
-  }
-
-  #main-page {
-    padding-left: 0;
-  }
-
-  #main-page .wrapper {
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /*#main-page .news-section {
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-  }*/
-
-  #main-page .weather-section {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-/*!############################################*/
-/* Estilos CSS para a grelha */
-#page {
-  display: grid;
-  grid-template-columns: auto 0 300px; /* 1ª coluna para o header, 2ª coluna para o main, 3ª coluna para o side */
-  grid-template-rows: auto 1fr; /* 1ª linha para o header, 2ª linha para o main */
-  height: 100vh; /* Altura total da viewport */
-  width: 100vw; /* Largura total da viewport */
-}
-
-.header-container {
-  grid-column: 1 / span 3; /* Ocupa todas as colunas */
-  grid-row: 1; /* Primeira linha */
-  height: fit-content;
-  background-color: #333;
+.vertical-divider {
+  background: linear-gradient(to bottom right, #69A3FF, #7B59FF);
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  width: 100%;
+  font-family: 'Arial', sans-serif;
   color: #fff;
-  padding: 20px;
+  grid-area: B;
 }
 
-#main-page .wrapper {
-  grid-column: 2; /* Segunda coluna */
-  grid-row: 2; /* Segunda linha */
-  background-color: #333;
-  padding: 20px;
+#page {
+  width: auto;
+  height: auto;
 }
 
-.side {
-  grid-column: 3; /* Terceira coluna */
-  grid-row: 2; /* Segunda linha */
-  max-width: 300px;
-  background-color: #ccc;
-  padding: 20px;
+.news-feed {
+  grid-area: A;
 }

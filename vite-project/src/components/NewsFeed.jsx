@@ -1,71 +1,78 @@
 import "@style/NewsFeed.css";
+import img1 from "../assets/alem-do-presidente.jpeg";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 
 const NewsFeed = () => {
-  // Colocar a lógica para chamar a API de notícias e renderizar os dados
+  // const[title, setTitle] = useState("")
+  // const[subtitle, setSubtitle] = useState("")
+  // const[summary, setSummary] = useState("")
+  // const[link, setLink] = useState("")
+  const [newsItems,setNewsItems] = useState([]);
+  
+  const JWT_TOKEN = localStorage.getItem("userToken");
 
-  const newsItens = [
-    {
-      title:
-        "Vacinados entrarão nos EUA sem quarentena a partir de 8 de novembro",
-      summary:
-        "Ministros ‘lavam as mãos’ sobre Bolsonaro não se vacinar, relata blog Bandeiras em frente ao Congresso lembram 600 mil brasileiros mortos",
-    },
-    { title: "Notícia", summary: "Resumo da notícia" },
-    //... mais notícias
-  ];
+  useEffect(() => {
+    const fetchNews = async () => {
+    try{
+      const response = await axios.get(
+        `http://localhost:3333/newsIBGE/7`,
+  
+        {
+          headers: {
+            Authorization: `Bearer ${JWT_TOKEN}`,
+          },
+        }
+      );
+      setNewsItems(response.data.newsList);
+      console.log(response.data.newsList);
+    }catch (error) {
+      console.error("Erro ao buscar notícias:", error);
+    }
+  };
+  fetchNews();
+  }, []);
 
   return (
     <div className="news-feed">
-      {newsItens.slice(0, 1).map((news, index) => (
-        <div key={index} className="main-new">
-          <h1>{news.title}</h1>
-          <p>{news.summary}</p>
-        </div>
-      ))}
-      <div className="under-notice">
-        <div className="top-notice">
-          {newsItens.slice(1).map((news, index) => (
-            <div key={index} className="news-item">
-              <h3>{news.title}</h3>
-              {news.imageUrl && <img src={news.imageUrl} alt={news.title} />}
-              {news.summary && <p>{news.summary}</p>}
+
+      <div className="main-news-item">
+        <h1 className="main-news-subtitle">{newsItems[0].subtitle}</h1>
+        <p className="main-news-summary">{newsItems[0].summary}</p>
+        {newsItems.length > 0 && (
+          <>
+        <h1 className="main-news-subtitle">{newsItems[0].titulo}</h1>
+        <p className="main-news-summary">{newsItems[0].introducao}</p> 
+        </>
+        )}
+      </div>
+
+      <div className="secondary-news-container">
+        {newsItems.slice(1, 4).map((news) => (
+          <div key={news.id} className="secondary-news-item">
+            {news.imagens && (
+              <img src= {news.imagens} alt={news.titulo} className="secondary-news-image"  />
+            )}
+            <div className="secondary-news-text">
+              <h2 className="secondary-news-title">{news.editorias}</h2>
+              <h3 className="secondary-news-subtitle">{news.titulo}</h3>
+              <p className="secondary-news-summary">{news.introducao}</p>
             </div>
-          ))}
-          {newsItens.slice(1).map((news, index) => (
-            <div key={index} className="news-item">
-              <h3>{news.title}</h3>
-              {news.imageUrl && <img src={news.imageUrl} alt={news.title} />}
-              {news.summary && <p>{news.summary}</p>}
+          </div>
+        ))}
+      </div>
+
+      <div className="additional-news-container">
+        {newsItems.slice(4).map((news) => (
+          <div key={news.id} className="additional-news-item">
+            <div className="additional-news-text">
+            <h2 className="secondary-news-title">{news.editorias}</h2>
+              <h3 className="secondary-news-subtitle">{news.titulo}</h3>
+              <p className="secondary-news-summary">{news.introducao}</p>
             </div>
-          ))}
-          {newsItens.slice(1).map((news, index) => (
-            <div key={index} className="news-item">
-              <h3>{news.title}</h3>
-              {news.imageUrl && <img src={news.imageUrl} alt={news.title} />}
-              {news.summary && <p>{news.summary}</p>}
-            </div>
-          ))}
-        </div>
-        <div className="bot-notice">
-          {newsItens.slice(1).map((news, index) => (
-            <div key={index} className="news-item">
-              <h3>{news.title}</h3>
-              <p>{news.summary}</p>
-            </div>
-          ))}
-          {newsItens.slice(1).map((news, index) => (
-            <div key={index} className="news-item">
-              <h3>{news.title}</h3>
-              <p>{news.summary}</p>
-            </div>
-          ))}
-          {newsItens.slice(1).map((news, index) => (
-            <div key={index} className="news-item">
-              <h3>{news.title}</h3>
-              <p>{news.summary}</p>
-            </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );

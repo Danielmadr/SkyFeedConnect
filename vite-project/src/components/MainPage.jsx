@@ -1,54 +1,50 @@
+import PropTypes from "prop-types";
 import "@style/MainPage.css";
-import { useNavigate } from "react-router-dom";
-import Header from "@commoncomponents/Header";
-//import Footer from "@commoncomponents/Footer";
 import WeatherWidget from "@components/WeatherSearch";
 import NewsFeed from "@components/NewsFeed";
+import logo from "../assets/logo2.png";
+import DateTimeWidget from "./DateTimeWidget";
+import { RxExit } from "react-icons/rx";
 
-const MainPage = () => {
-  const username = "Daniel";
 
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    // Tem que limpar o estado de autenticação, tokens, etc.
-    navigate("/login");
-  };
+const MainPage = ({ onLogout }) => {
+  const username = localStorage.getItem("userName") || "Usuário";
 
   return (
-    <div id="page">
-      <div className="header-container">
-        <Header username={username} onLogout={handleLogout} />
-      </div>
-      <div id="main-page" className="wrapper">
-        <div className="news-section">
-          <NewsFeed />
+    <body>
+      <section id="header">
+        <div className="header-content">
+          <div className="header-logo">
+            <img src={logo} alt="Logo" className="logo" />
+            <div className="header-title">
+              <h1>SKY FEED CONNECT</h1>
+              <p>Porque sua vida conosco é mais conectada</p>
+            </div>
+          </div>
+          <div className="header-user-info">
+            <span className="username">{username}</span>
+            <a href="/login" onClick={onLogout} className="logout-link">
+              <RxExit />
+            </a>
+          </div>
         </div>
-      </div>
-      <div className="side">
-        <div className="weather-section">
-          <WeatherWidget />
+      </section>
+      ,
+      <section id="principal">
+        <div className="personal-feed">
+          <NewsFeed className="news-feed" />
+          <div className="vertical-divider">
+            <WeatherWidget className="weather-widget" />
+            <DateTimeWidget />
+          </div>
         </div>
-      </div>
-      {/* <hr className="bottom-hr" />
-      <Footer /> */}
-    </div>
-
-    // <div id="page">
-    //   <div className="logo">{/* Logotipo e cabeçalho aqui */}</div>
-    //   <Header username={username} onLogout={handleLogout} />
-    //   <div id="main-page" className="wrapper">
-    //     <div className="news-section">
-    //       <NewsFeed />
-    //     </div>
-    //     <div className="weather-section">
-    //       <WeatherWidget />
-    //     </div>
-    //   </div>
-    //   <hr className="bottom-hr" />
-    //   <Footer />
-    // </div>
+      </section>
+    </body>
   );
+};
+
+MainPage.propTypes = {
+  onLogout: PropTypes.func.isRequired,
 };
 
 export default MainPage;

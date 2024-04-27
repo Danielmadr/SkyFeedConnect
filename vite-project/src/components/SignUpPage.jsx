@@ -40,13 +40,17 @@ const SignUpPage = () => {
         status: userDetails.status,
       });
 
+      await axios.post("http://localhost:3333/newUser", {
+        username: userDetails.username,
+      });
+
       console.log("User registered successfully:", response.data);
-      navigate("/login"); // Redireciona para a página de login após o cadastro
+      navigate("/login");
     } catch (error) {
       setError(error.response.data.message);
       console.error("Failed to register user:", error);
     } finally {
-      setIsSubmitting(false); // Finaliza o indicador de envio, independentemente do resultado
+      setIsSubmitting(false);
     }
   };
 
@@ -98,6 +102,11 @@ const SignUpPage = () => {
         >
           {isSubmitting ? "Submitting..." : "Sign Up"}
         </button>
+        {error && (
+          <p className="error-message" style={{ color: "red" }}>
+            {error}
+          </p>
+        )}
       </form>
       {error && (
         <p className="error-message" style={{ color: "red" }}>

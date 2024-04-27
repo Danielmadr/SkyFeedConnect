@@ -8,7 +8,7 @@ const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false); // Estado para controle de envio
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleForgotPassword = () => {
     console.log("Forgot Password Clicked");
@@ -24,8 +24,8 @@ const LoginPage = () => {
       });
 
       const { token } = response.data;
-
       localStorage.setItem("userToken", token);
+      localStorage.setItem("userName", username.split("@")[0]);
       navigate("/main");
     } catch (error) {
       setError("Erro ao fazer login. Verifique suas credenciais!");
