@@ -6,15 +6,14 @@ import logo from "../assets/logo2.png";
 import DateTimeWidget from "./DateTimeWidget";
 import { RxExit } from "react-icons/rx";
 
-
 const MainPage = ({ onLogout }) => {
   const username = localStorage.getItem("userName") || "Usuário";
 
   return (
-    <body>
+    <section id="body">
       <section id="header">
         <div className="header-content">
-          <div className="header-logo">
+          <div className="branch">
             <img src={logo} alt="Logo" className="logo" />
             <div className="header-title">
               <h1>SKY FEED CONNECT</h1>
@@ -39,7 +38,7 @@ const MainPage = ({ onLogout }) => {
           </div>
         </div>
       </section>
-    </body>
+    </section>
   );
 };
 
