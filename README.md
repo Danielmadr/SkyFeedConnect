@@ -77,6 +77,10 @@ SkyFeed é uma aplicação web que combina notícias atualizadas e informações
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir um pull request com melhorias ou correções.
 
-## Autor
+## Equipe
 
-Desenvolvido por [Daniel Martins de Andrade](https://github.com/Danielmadr).
+[Daniel Martins de Andrade](https://github.com/Danielmadr)
+
+[Yasmin Barcelos](https://www.linkedin.com/in/yasminbarcelos/)
+
+[Paulo Henrique](https://www.linkedin.com/in/paulo-henrique-3999341b8/)
