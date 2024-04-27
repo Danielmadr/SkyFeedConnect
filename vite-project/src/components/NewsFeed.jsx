@@ -55,7 +55,7 @@ const NewsFeed = () => {
               />
             )}
             <div className="secondary-news-text">
-              <h2 className="secondary-news-title">{news.editorias}</h2>
+              <h2 className="secondary-news-title">{news.editorias} </h2>
               <h3 className="secondary-news-subtitle">{news.titulo}</h3>
               <p className="secondary-news-summary">{news.introducao}</p>
             </div>
