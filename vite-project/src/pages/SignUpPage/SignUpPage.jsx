@@ -59,66 +59,68 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="sign-up-container">
-      <h1 className="title-sign">Sign Up</h1>
-      <p className="subtitle">Welcome to Sky Feed Connect!</p>
-      <form onSubmit={handleSubmit} className="sign-up-form">
-        <input
-          type="text"
-          name="username"
-          placeholder="Full Name"
-          required
-          value={userDetails.username}
-          onChange={handleChange}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          required
-          value={userDetails.email}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-          value={userDetails.password}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Repeat Password"
-          required
-          value={userDetails.confirmPassword}
-          onChange={handleChange}
-        />
-        <button
-          type="submit"
-          className="sign-up-button"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? "Submitting..." : "Sign Up"}
-        </button>
+    <div id="sign-page">
+      <div className="sign-up-container">
+        <h1 className="title-sign">Sign Up</h1>
+        <p className="subtitle">Welcome to Sky Feed Connect!</p>
+        <form onSubmit={handleSubmit} className="sign-up-form">
+          <input
+            type="text"
+            name="username"
+            placeholder="Full Name"
+            required
+            value={userDetails.username}
+            onChange={handleChange}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            value={userDetails.email}
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+            value={userDetails.password}
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Repeat Password"
+            required
+            value={userDetails.confirmPassword}
+            onChange={handleChange}
+          />
+          <button
+            type="submit"
+            className="sign-up-button"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Submitting..." : "Sign Up"}
+          </button>
+          {error && (
+            <p className="error-message" style={{ color: "red" }}>
+              {error}
+            </p>
+          )}
+        </form>
         {error && (
           <p className="error-message" style={{ color: "red" }}>
             {error}
           </p>
         )}
-      </form>
-      {error && (
-        <p className="error-message" style={{ color: "red" }}>
-          {error}
+        <p className="sign-in-redirect">
+          Already have an Account?{" "}
+          <span className="sign-in-link" onClick={handleSignInClick}>
+            Sign in
+          </span>
         </p>
-      )}
-      <p className="sign-in-redirect">
-        Already have an Account?{" "}
-        <span className="sign-in-link" onClick={handleSignInClick}>
-          Sign in
-        </span>
-      </p>
+      </div>
     </div>
   );
 };
