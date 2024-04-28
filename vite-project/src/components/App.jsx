@@ -8,6 +8,7 @@ import {
 import LoginPage from "@pages/LoginPage/LoginPage";
 import SignUpPage from "@pages/SignUpPage/SignUpPage";
 import MainPage from "@pages/MainPage/MainPage";
+import PrivateRoute from "./PrivateRoute";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -42,11 +43,9 @@ const App = () => {
         <Route
           path="/main"
           element={
-            // isAuthenticated ? (
-            <MainPage onLogout={handleLogout} />
-            // ) : (
-            //   <Navigate replace to="/login" />
-            // )
+            <PrivateRoute>
+              <MainPage onLogout={handleLogout} />
+            </PrivateRoute>
           }
         />
       </Routes>

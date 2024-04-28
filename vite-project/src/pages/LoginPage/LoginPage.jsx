@@ -1,37 +1,17 @@
 import "./LoginPage.css";
-import axios from "axios";
+import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const { handleSignIn, error, isSubmitting } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleForgotPassword = () => {
-    console.log("Forgot Password Clicked");
-  };
-
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const response = await axios.post("http://localhost:8080/auth/login", {
-        username,
-        password,
-      });
-
-      const { token } = response.data;
-      localStorage.setItem("userToken", token);
-      localStorage.setItem("userName", username.split("@")[0]);
-      navigate("/main");
-    } catch (error) {
-      setError("Erro ao fazer login. Verifique suas credenciais!");
-    } finally {
-      setIsSubmitting(false);
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleSignIn(username, password);
   };
 
   const handleSignUpClick = () => {
@@ -43,7 +23,7 @@ const LoginPage = () => {
       <div className="sign-in-container">
         <h1 className="title-sign">Sign In</h1>
         <p className="subtitle">Welcome to Sky Feed Connect!</p>
-        <form onSubmit={handleSignIn} className="sign-in-form">
+        <form onSubmit={handleSubmit} className="sign-in-form">
           <input
             type="email"
             placeholder="Email"
@@ -64,13 +44,6 @@ const LoginPage = () => {
             disabled={isSubmitting}
           >
             {isSubmitting ? "Signing In..." : "Sign In"}
-          </button>
-          <button
-            type="button"
-            onClick={handleForgotPassword}
-            className="forgot-password-link"
-          >
-            Forgot Password?
           </button>
         </form>
         {error && (
