@@ -30,7 +30,7 @@ const SignUpPage = () => {
       return;
     }
 
-    setIsSubmitting(true); // Inicia o indicador de envio
+    setIsSubmitting(true);
 
     try {
       const response = await axios.post("http://localhost:8080/users/save", {
@@ -103,11 +103,6 @@ const SignUpPage = () => {
           >
             {isSubmitting ? "Submitting..." : "Sign Up"}
           </button>
-          {error && (
-            <p className="error-message" style={{ color: "red" }}>
-              {error}
-            </p>
-          )}
         </form>
         {error && (
           <p className="error-message" style={{ color: "red" }}>
