@@ -1,4 +1,4 @@
-import "@style/SignUpPage.css";
+import "./SignUpPage.css";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -59,7 +59,7 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="auth-container sign-up-container">
+    <div className="sign-up-container">
       <h1 className="title-sign">Sign Up</h1>
       <p className="subtitle">Welcome to Sky Feed Connect!</p>
       <form onSubmit={handleSubmit} className="sign-up-form">

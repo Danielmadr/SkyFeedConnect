@@ -1,4 +1,4 @@
-import "@style/LoginPage.css";
+import "./LoginPage.css";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -39,7 +39,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="auth-container sign-in-container">
+    <div className="sign-in-container">
       <h1 className="title-sign">Sign In</h1>
       <p className="subtitle">Welcome to Sky Feed Connect!</p>
       <form onSubmit={handleSignIn} className="sign-in-form">

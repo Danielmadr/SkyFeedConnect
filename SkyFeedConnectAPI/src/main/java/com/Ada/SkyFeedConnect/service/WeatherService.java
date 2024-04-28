@@ -12,7 +12,7 @@ public class WeatherService {
   private String apiKey;
 
   public WeatherResponseDTO getWeatherByCity(String city) {
-    String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=metric";
+    String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&lang=pt_br&units=metric";
     RestTemplate restTemplate = new RestTemplate();
     WeatherInfo weatherData = restTemplate.getForObject(url, WeatherInfo.class);
 

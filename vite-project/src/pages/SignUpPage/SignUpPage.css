@@ -1,15 +1,23 @@
-.auth-container {
+.sign-up-container {
   background: #fff;
+  max-width: 350px;
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 100%;
-  max-width: 350px;
-  min-width: 364px;
-  margin: auto;
   display: flex;
   flex-direction: column;
+}
+
+.sign-up-container h1 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.sign-up-container p {
+  color: #666;
+  margin-bottom: 2rem;
 }
 
 input,

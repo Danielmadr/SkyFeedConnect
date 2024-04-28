@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../style/DateTimeWidget.css";
+import "./DateTimeWidget.css";
 
 const DateTimeWidget = () => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
@@ -7,7 +7,7 @@ const DateTimeWidget = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentDateTime(new Date());
-    }, 1000); // Atualiza a cada segundo
+    }, 1000);
 
     return () => clearInterval(intervalId);
   }, []);
