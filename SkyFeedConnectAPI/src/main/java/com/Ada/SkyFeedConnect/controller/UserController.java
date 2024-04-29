@@ -14,6 +14,14 @@ public class UserController {
 
   private final UserService userService;
 
+    /**
+     * Creates a new user based on the provided user data.
+     *
+     * @param userRequestDTO The DTO containing user data.
+     * @return A ResponseEntity indicating the success of the user creation.
+     */
+
+
   @PostMapping("/newUser")
   public ResponseEntity<String> newUser(@RequestBody UserRequestDTO userRequestDTO) {
     userService.addUser(userRequestDTO);

@@ -5,12 +5,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Represents a response from IBGE containing news items.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Setter
 public class NewsResponseIBGE {
   private NewsItem[] items;
 
+    /**
+     * Represents a single news item.
+     */
   @Setter
   @Getter
   public static class NewsItem {

@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Represents a user entity with preferences.
+ */
 @Entity
 @Table(name = "users_preferences")
 @Setter
