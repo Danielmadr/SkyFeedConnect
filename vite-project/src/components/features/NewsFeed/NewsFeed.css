@@ -2,6 +2,18 @@
   margin-bottom: 20px;
 }
 
+.main-news-item a,
+.secondary-news-item a,
+.additional-news-container a{
+  color:#206be2;
+}
+
+.main-news-item a:hover,
+.secondary-news-item a:hover,
+.additional-news-container a:hover{
+  color:#0088ff;
+}
+
 .main-news-item h1 {
   font-weight: 700;
   color: #206be2;
@@ -65,6 +77,7 @@
   font-weight: 700;
   font-size: 1.25rem;
   margin-top: 1rem;
+  
 }
 
 .secondary-news-item p {
