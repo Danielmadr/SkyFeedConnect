@@ -1,4 +1,4 @@
-package com.Ada.SkyFeedConnect.security;
+package com.Ada.SkyFeedConnect.security.service;
 
 import com.Ada.SkyFeedConnect.model.User;
 import com.Ada.SkyFeedConnect.repository.UserRepository;
@@ -8,17 +8,19 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
+/**
+ * Service for loading user details from the database for authentication.
+ */
 @Service
 @RequiredArgsConstructor
-public class UserDatailServiceImpl implements UserDetailsService {
+public class UserDatailsServiceImpl implements UserDetailsService {
 
-  private final UserRepository userRepository;
+    private final UserRepository userRepository;
 
-  @Override
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    User user = this.userRepository.findByUsername(username).orElseThrow(
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = this.userRepository.findByUsername(username).orElseThrow(
             () -> new UsernameNotFoundException("User not found"));
-    return UserDetailsImpl.build(user);
-  }
+        return UserDatailImpl.build(user);
+    }
 }

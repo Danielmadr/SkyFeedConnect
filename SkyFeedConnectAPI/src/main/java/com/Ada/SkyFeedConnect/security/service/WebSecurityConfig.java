@@ -1,5 +1,7 @@
-package com.Ada.SkyFeedConnect.security;
+package com.Ada.SkyFeedConnect.security.service;
 
+import com.Ada.SkyFeedConnect.security.jwt.AuthEntryPointJwt;
+import com.Ada.SkyFeedConnect.security.jwt.AuthFilterToken;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,44 +18,46 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * Configuration class for setting up web security.
+ */
 @Configuration
 @EnableMethodSecurity
 @RequiredArgsConstructor
 public class WebSecurityConfig {
 
-  private final AuthEntryPointJwt unauthorizedHandler;
+    private final AuthEntryPointJwt unauthorizedHandler;
 
-  @Bean
-  public PasswordEncoder passwordEncoder() {
+    @Bean
+    public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
 
-  @Bean
-  public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-    return authenticationConfiguration.getAuthenticationManager();
-  }
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
 
-  @Bean
-  public AuthFilterToken authFilterToken() {
+    @Bean
+    public AuthFilterToken authFilterToken() {
     return new AuthFilterToken();
   }
 
-  @Bean
-  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-    http.cors(Customizer.withDefaults());
-    http.csrf(AbstractHttpConfigurer::disable) //todo não é recomendado desabilitar esse cara estudar o porquê!
+        http.cors(Customizer.withDefaults());
+        http.csrf(AbstractHttpConfigurer::disable)
             .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/**").permitAll()
                     .requestMatchers("/h2-console/**").permitAll()
                     .anyRequest().authenticated()).headers(headers -> headers
-                    .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin) //Professor o problema estava na Liberação o X-Frame-Options para o console H2, agora está funcionando
-            );//todo libera acesso geral, apenas para desenvolvimento olhar mais tarde
+                    .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
+            );
 
-    http.addFilterBefore(authFilterToken(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(authFilterToken(), UsernamePasswordAuthenticationFilter.class);
 
-    return http.build();
-  }
-
+        return http.build();
+    }
 }

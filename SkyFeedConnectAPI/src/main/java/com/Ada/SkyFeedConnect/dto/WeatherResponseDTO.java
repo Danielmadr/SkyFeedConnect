@@ -14,9 +14,9 @@ public record WeatherResponseDTO(String description, String icon, double temp, d
      * @param weatherData The WeatherInfo object containing weather data.
      * @return A WeatherResponseDTO object populated with data from WeatherInfo.
      */
-  public static WeatherResponseDTO toDTO(WeatherInfo weatherData) {
-    WeatherInfo.Weather weather = weatherData.getWeather().getFirst();
-    WeatherInfo.Main main = weatherData.getMain();
-    return new WeatherResponseDTO(weather.description(), weather.icon(), main.temp(), main.feels_like(), weatherData.getName());
-  }
+    public static WeatherResponseDTO toDTO(WeatherInfo weatherData) {
+        WeatherInfo.Weather weather = weatherData.getWeather().getFirst();
+        WeatherInfo.Main main = weatherData.getMain();
+        return new WeatherResponseDTO(weather.description(), weather.icon(), main.temp(), main.feels_like(), weatherData.getName());
+    }
 }

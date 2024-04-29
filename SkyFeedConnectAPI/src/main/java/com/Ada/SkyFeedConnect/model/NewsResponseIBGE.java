@@ -12,30 +12,30 @@ import lombok.Setter;
 @Getter
 @Setter
 public class NewsResponseIBGE {
-  private NewsItem[] items;
+    private NewsItem[] items;
 
     /**
      * Represents a single news item.
      */
-  @Setter
-  @Getter
-  public static class NewsItem {
-    @JsonProperty("editorias")
-    private final String title;
-    @JsonProperty("titulo")
-    private final String subtitle;
-    @JsonProperty("introducao")
-    private final String summary;
-    private final String link;
-    @JsonProperty("imagens")
-    private String imagem;
+    @Setter
+    @Getter
+    public static class NewsItem {
+        @JsonProperty("editorias")
+        private final String title;
+        @JsonProperty("titulo")
+        private final String subtitle;
+        @JsonProperty("introducao")
+        private final String summary;
+        private final String link;
+        @JsonProperty("imagens")
+        private String imagem;
 
-    public NewsItem(String title, String subtitle, String summary, String link, String imagem) {
-      this.title = title;
-      this.subtitle = subtitle;
-      this.summary = summary;
-      this.link = link;
-      this.imagem = imagem;
+        public NewsItem(String title, String subtitle, String summary, String link, String imagem) {
+            this.title = title;
+            this.subtitle = subtitle;
+            this.summary = summary;
+            this.link = link;
+            this.imagem = imagem;
+        }
     }
-  }
 }

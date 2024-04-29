@@ -14,14 +14,14 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class User {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(nullable = false)
-  private String username;
+    @Column(nullable = false)
+    private String username;
 
-  public User(String username) {
+    public User(String username) {
     this.username = username;
   }
 }
