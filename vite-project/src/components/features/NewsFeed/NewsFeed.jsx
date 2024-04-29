@@ -28,12 +28,14 @@ const NewsFeed = () => {
       <div className="main-news-item">
         {newsItems.length > 0 && (
           <>
-            <h1 className="main-news-subtitle">{newsItems[0].titulo}</h1>
+            <h1 className="main-news-subtitle"><a href = {newsItems[0].link}>{newsItems[0].titulo}</a></h1>
+            <a href = {newsItems[0].link}>
             <img
               src={newsItems[0].imagens}
               alt={newsItems[0].titulo}
               className="secondary-news-image"
             />
+            </a>
             <p className="main-news-summary">{newsItems[0].introducao}</p>
           </>
         )}
@@ -51,7 +53,7 @@ const NewsFeed = () => {
             )}
             <div className="secondary-news-text">
               <h2 className="secondary-news-title">{news.editorias} </h2>
-              <h3 className="secondary-news-subtitle">{news.titulo}</h3>
+              <h3 className="secondary-news-subtitle"><a href={news.link}>{news.titulo}</a></h3>
               <p className="secondary-news-summary">{news.introducao}</p>
             </div>
           </div>
@@ -63,7 +65,7 @@ const NewsFeed = () => {
           <div key={news.id} className="additional-news-item">
             <div className="additional-news-text">
               <h2 className="additional-news-title">{news.editorias}</h2>
-              <h3 className="additional-news-subtitle">{news.titulo}</h3>
+              <h3 className="additional-news-subtitle"><a href = {news.link}>{news.titulo}</a></h3>
               <p className="additional-news-summary">{news.introducao}</p>
             </div>
           </div>
