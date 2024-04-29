@@ -139,14 +139,11 @@ img {
 
 /* Link Styles */
 a {
-  color: #007bff;
-  background-color: transparent;
   text-decoration: none;
 }
 
 a:hover {
   color: #0056b3;
-  text-decoration: underline;
 }
 
 /* Set every element to use border-box */
