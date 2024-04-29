@@ -3,6 +3,8 @@ import "./SignUpPage.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUpPage = () => {
   const [userDetails, setUserDetails] = useState({
@@ -10,7 +12,6 @@ const SignUpPage = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    status: "A", // Definindo o status como "A" por padrão
   });
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false); // Estado para controle de envio
@@ -24,6 +25,7 @@ const SignUpPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
     if (userDetails.password !== userDetails.confirmPassword) {
       setError("Passwords do not match.");
@@ -37,19 +39,37 @@ const SignUpPage = () => {
         username: userDetails.username,
         email: userDetails.email,
         password: userDetails.password,
-        status: userDetails.status,
       });
 
-      await axios.post("http://localhost:3333/newUser", {
-        username: userDetails.username,
+      await axios.post("http://localhost:3333/auth/newUser", {
+        username: userDetails.email,
       });
 
-      console.log("User registered successfully:", response.data);
-      navigate("/login");
+      console.log("User registered successfully", response.data);
+
+      toast.success("Usuário registrado com sucesso!", {
+        autoClose: false,
+        closeOnClick: false,
+        closeButton: (
+          <button
+            onClick={() => {
+              navigate("/login");
+              toast.dismiss();
+            }}
+            style={{
+              backgroundColor: "#206be2",
+              color: "white",
+              padding: "5px 10px",
+              borderRadius: "5px",
+            }}
+          >
+            Ir para o Login
+          </button>
+        ),
+      });
     } catch (error) {
       setError(error.response.data.message);
       console.error("Failed to register user:", error);
-    } finally {
       setIsSubmitting(false);
     }
   };
@@ -116,6 +136,7 @@ const SignUpPage = () => {
           </span>
         </p>
       </div>
+      <ToastContainer />
     </div>
   );
 };

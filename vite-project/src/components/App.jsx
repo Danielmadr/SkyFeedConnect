@@ -9,6 +9,7 @@ import LoginPage from "@pages/LoginPage/LoginPage";
 import SignUpPage from "@pages/SignUpPage/SignUpPage";
 import MainPage from "@pages/MainPage/MainPage";
 import PrivateRoute from "./PrivateRoute";
+import VerifyEmail from "../pages/VerifyEmailPage/VerifyEmail";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -48,6 +49,7 @@ const App = () => {
             </PrivateRoute>
           }
         />
+        <Route path="/verify/:uuid" element={<VerifyEmail />} />
       </Routes>
     </Router>
   );
