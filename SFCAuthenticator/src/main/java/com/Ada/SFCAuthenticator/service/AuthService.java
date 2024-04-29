@@ -11,41 +11,48 @@ import com.Ada.SFCAuthenticator.dto.AccessDTO;
 import com.Ada.SFCAuthenticator.dto.AuthenticationDTO;
 import com.Ada.SFCAuthenticator.security.jwt.JwtUtils;
 
-
+/**
+ * This service class handles user authentication and JWT token generation.
+ */
 @Service
 public class AuthService {
 
-  private final AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
-  private final JwtUtils jwtUtils;
+    private final JwtUtils jwtUtils;
 
-  public AuthService(AuthenticationManager authenticationManager, JwtUtils jwtUtils) {
-    this.authenticationManager = authenticationManager;
-    this.jwtUtils = jwtUtils;
-  }
+    /**
+     * Constructs the AuthService with the required dependencies.
+     * @param authenticationManager The authentication manager.
+     * @param jwtUtils The JWT utility for token operations.
+     */
+    public AuthService(AuthenticationManager authenticationManager, JwtUtils jwtUtils) {
+        this.authenticationManager = authenticationManager;
+        this.jwtUtils = jwtUtils;
+    }
 
-  public AccessDTO login(AuthenticationDTO authDto) {
+    /**
+     * Handles user login and returns the JWT access token.
+     * @param authDto The authentication DTO containing username and password.
+     * @return An AccessDTO containing the JWT access token.
+     * @throws InvalidCredentialsException If login credentials are invalid.
+     */
+    public AccessDTO login(AuthenticationDTO authDto) {
 
-    try {
-      //Cria mecanismo de credencial para o Spring
-      UsernamePasswordAuthenticationToken userAuth =
+        try {
+        UsernamePasswordAuthenticationToken userAuth =
               new UsernamePasswordAuthenticationToken(authDto.username(), authDto.password());
 
-      //Prepara mecanismo para Autenticação
-      Authentication authentication = authenticationManager.authenticate(userAuth);
+        Authentication authentication = authenticationManager.authenticate(userAuth);
 
-      //Busca usuario logado
-      UserDetailsImpl userAuthDetails = (UserDetailsImpl) authentication.getPrincipal();
+        UserDetailsImpl userAuthDetails = (UserDetailsImpl) authentication.getPrincipal();
 
-      String token = jwtUtils.generateTokenFromUserDetailsImpl(userAuthDetails);
+        String token = jwtUtils.generateTokenFromUserDetailsImpl(userAuthDetails);
 
-      return new AccessDTO(token);
+        return new AccessDTO(token);
 
-    } catch (BadCredentialsException e) {
-      throw new InvalidCredentialsException();
+        } catch (BadCredentialsException e) {
+        throw new InvalidCredentialsException();
+        }
     }
-  }
 }
-
-
-
