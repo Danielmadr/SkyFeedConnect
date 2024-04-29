@@ -1,4 +1,4 @@
-package com.Ada.SkyFeedConnect.security.service;
+package com.Ada.SkyFeedConnect.security;
 
 import com.Ada.SkyFeedConnect.security.jwt.AuthEntryPointJwt;
 import com.Ada.SkyFeedConnect.security.jwt.AuthFilterToken;

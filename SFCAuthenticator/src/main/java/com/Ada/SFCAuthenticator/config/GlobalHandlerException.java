@@ -48,6 +48,6 @@ public class GlobalHandlerException {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionMessageDTO> handleGenericException( Exception ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-            .body(new ExceptionMessageDTO("Ocorreu um erro inesperado"+ex.getMessage()));
+                .body(new ExceptionMessageDTO("Ocorreu um erro inesperado"+ex.getMessage()));
     }
 }

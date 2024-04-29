@@ -26,13 +26,12 @@ public class NewsResponseIBGE_Service {
         String url = "https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=" + qtd;
         RestTemplate restTemplate = new RestTemplate();
         NewsResponseIBGE response = restTemplate.getForObject(url, NewsResponseIBGE.class);
-
         NewsResponseIBGE_DTO newsItemList = new NewsResponseIBGE_DTO(new ArrayList<>());
         if (response != null) {
-        for (NewsResponseIBGE.NewsItem item : response.getItems()) {
-            String imageIntroduction = getImageIntroduction(item.getImagem());
-            item.setImagem(imageIntroduction);
-            newsItemList.newsList().add(item);
+            for (NewsResponseIBGE.NewsItem item : response.getItems()) {
+                String imageIntroduction = getImageIntroduction(item.getImagem());
+                item.setImagem(imageIntroduction);
+                newsItemList.newsList().add(item);
             }
         }
     return newsItemList;

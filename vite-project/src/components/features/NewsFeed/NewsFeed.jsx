@@ -48,21 +48,21 @@ const NewsFeed = () => {
       <div className="secondary-news-container">
         {newsItems.slice(1, 4).map((news) => (
           <div key={news.id} className="secondary-news-item">
-            {news.imagens && (
-              <a href={news.link}>
+            <a href={news.link}>
+              {news.imagens && (
                 <img
                   src={news.imagens}
                   alt={news.titulo}
                   className="secondary-news-image"
                 />
-              </a>
-            )}
+              )}
+            </a>
             <div className="secondary-news-text">
               <h2 className="secondary-news-title">
                 <a href={news.link}>{news.editorias}</a>{" "}
               </h2>
               <h3 className="secondary-news-subtitle">
-                <a href={news.link}>{news.titulo}</a>
+                <a href={news.link}>{news.titulo}</a>{" "}
               </h3>
               <p className="secondary-news-summary">
                 <a href={news.link}>{news.introducao}</a>{" "}
