@@ -6,7 +6,6 @@ import FireworksCanvas from "./FireworksCanvas ";
 
 const VerifyEmail = () => {
   const [message, setMessage] = useState("");
-  const [messageColor, setMessageColor] = useState("green");
   const location = useLocation();
   const uuid = location.pathname.split("/").pop(); // Extrai o uuid do URL
 
@@ -19,7 +18,6 @@ const VerifyEmail = () => {
           `http://localhost:8080/users/activate/${uuid}`
         );
         setMessage(response.data.message);
-        setMessageColor("");
       } catch (error) {
         console.error("Erro ao verificar email:", error);
         setMessage(error.message);
@@ -31,7 +29,6 @@ const VerifyEmail = () => {
 
   return (
     <div id="verify-page">
-      <h1 className="title-verify">{messageColor}</h1>
       <h1 className="title-verify">{message}</h1>
       <FireworksCanvas />
     </div>
