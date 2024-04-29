@@ -32,7 +32,7 @@ public class AuthService {
               new UsernamePasswordAuthenticationToken(authDto.username(), authDto.password());
 
       //Prepara mecanismo para Autenticação
-      Authentication authentication = authenticationManager.authenticate(userAuth); //retorna erro 2024-04-17T19:54:37.936-03:00  WARN 1092 --- [SkyFeedConnect] [nio-8080-exec-4] o.s.s.c.bcrypt.BCryptPasswordEncoder     : Encoded password does not look like BCrypt
+      Authentication authentication = authenticationManager.authenticate(userAuth);
 
       //Busca usuario logado
       UserDetailsImpl userAuthDetails = (UserDetailsImpl) authentication.getPrincipal();

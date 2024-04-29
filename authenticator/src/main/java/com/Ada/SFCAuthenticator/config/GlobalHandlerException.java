@@ -1,6 +1,7 @@
 package com.Ada.SFCAuthenticator.config;
 
 import com.Ada.SFCAuthenticator.dto.ExceptionMessageDTO;
+import com.Ada.SFCAuthenticator.dto.VerifyMessage;
 import com.Ada.SFCAuthenticator.model.exceptions.*;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ public class GlobalHandlerException {
   }
 
   @ExceptionHandler(AccountAlreadyVerifiedOrWrongLinkException.class)
-  public ResponseEntity<ExceptionMessageDTO> handleExpiredJwtException(ExpiredJwtException ex) {
+  public ResponseEntity<ExceptionMessageDTO> handleAccountAlreadyVerifiedOrWrongLinkException(AccountAlreadyVerifiedOrWrongLinkException ex) {
     return ResponseEntity.status(409).body(new ExceptionMessageDTO(ex.getMessage()));
   }
 
@@ -42,8 +43,8 @@ public class GlobalHandlerException {
   }
 
   @ExceptionHandler(Exception.class)
-  public ResponseEntity<ExceptionMessageDTO> handleGenericException() {
+  public ResponseEntity<ExceptionMessageDTO> handleGenericException( Exception ex) {
     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-            .body(new ExceptionMessageDTO("Ocorreu um erro inesperado"));
+            .body(new ExceptionMessageDTO("Ocorreu um erro inesperado"+ex.getMessage()));
   }
 }

@@ -34,6 +34,7 @@ public class UserController {
 
   @GetMapping("/activate/{uuid}")
   public ResponseEntity<VerifyMessage> verifyUser(@PathVariable String uuid) {
-    return ResponseEntity.ok(this.userService.verifyUser(uuid));
+    VerifyMessage verifyMessage = this.userService.verifyUser(uuid);
+    return ResponseEntity.ok(verifyMessage);
   }
 }

@@ -40,7 +40,7 @@ public class UserService {
 
   private final Instant VERIFY_EMAIL_EXPIRATION = now().plusMillis(900000);
 
-  @Value("${project.dominio}")
+  @Value("${project.verify.dominio}")
   private String dominio;
 
   public void saveNewUser(UserRequestDTO user) {
@@ -86,7 +86,7 @@ public class UserService {
     headers.setContentType(MediaType.TEXT_HTML);
 
     String subject = "Bem-vindo(a) ao SkyFeedConnect";
-    String activationLink = dominio + "users/activate/" + user.getIdentifier();
+    String activationLink = dominio + user.getIdentifier();
     String emailContent = String.format("""
             <html>
             <body style="font-family: Arial, sans-serif;">
@@ -160,7 +160,7 @@ public class UserService {
     headers.setContentType(MediaType.TEXT_HTML);
 
     String subject = "Link de Verificação Atualizado";
-    String activationLink = dominio + "users/activate/" + user.getIdentifier();
+    String activationLink = dominio + user.getIdentifier();
     String emailContent = String.format("""
             <html>
             <body style="font-family: Arial, sans-serif;">
