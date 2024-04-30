@@ -6,13 +6,22 @@ import com.Ada.SkyFeedConnect.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service class for managing user-related operations.
+ */
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
-  private final UserRepository userRepository;
+    private final UserRepository userRepository;
 
-  public void addUser(UserRequestDTO userRequestDTO) {
+    /**
+     * Adds a new user to the system.
+     *
+     * @param userRequestDTO The DTO containing user data.
+     */
+
+    public void addUser(UserRequestDTO userRequestDTO) {
   userRepository.save(new User(userRequestDTO.username()));
   }
 }

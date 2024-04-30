@@ -1,5 +1,7 @@
 package com.Ada.SFCAuthenticator.dto;
 
+/**
+ * Data Transfer Object (DTO) representing an access token.
+ */
 public record AccessDTO(String token) {
-  //todo implementar retornar o usuario e liberaçoes (authorities)
 }

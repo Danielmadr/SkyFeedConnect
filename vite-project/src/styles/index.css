@@ -142,10 +142,6 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  color: #0056b3;
-}
-
 /* Set every element to use border-box */
 * {
   box-sizing: border-box;

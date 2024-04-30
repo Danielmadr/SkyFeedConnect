@@ -14,20 +14,31 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+/**
+ * This class handles the unauthorized entry point for JWT authentication.
+ */
 @Component
 public class AuthEntryPointJwt implements AuthenticationEntryPoint {
-  @Override
-  public void commence(HttpServletRequest request, HttpServletResponse response,
+
+    /**
+     * Handles the unauthorized entry point by sending an HTTP response with JSON body.
+     * @param request The incoming HTTP request.
+     * @param response The HTTP response to be sent back.
+     * @param authException The authentication exception.
+     * @throws IOException If an I/O exception occurs.
+     */
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response,
                        AuthenticationException authException) throws IOException {
 
-    response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
-    final Map<String, Object> body = new HashMap<>();
-    body.put("status", HttpServletResponse.SC_UNAUTHORIZED);
-    body.put("error", "Unauthorized");
+        final Map<String, Object> body = new HashMap<>();
+        body.put("status", HttpServletResponse.SC_UNAUTHORIZED);
+        body.put("error", "Unauthorized");
 
-    final ObjectMapper mapper = new ObjectMapper();
-    mapper.writeValue(response.getOutputStream(), body);
-  }
+        final ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(response.getOutputStream(), body);
+    }
 }

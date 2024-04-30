@@ -1,4 +1,4 @@
-package com.Ada.SkyFeedConnect.security;
+package com.Ada.SkyFeedConnect.security.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,13 +12,16 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Custom authentication entry point for JWT authentication.
+ */
 @Component
 public class AuthEntryPointJwt implements AuthenticationEntryPoint {
-  @Override
-  public void commence(HttpServletRequest request, HttpServletResponse response,
-                       AuthenticationException authException) throws IOException {
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response,
+                         AuthenticationException authException) throws IOException {
 
-    response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
     final Map<String, Object> body = new HashMap<>();

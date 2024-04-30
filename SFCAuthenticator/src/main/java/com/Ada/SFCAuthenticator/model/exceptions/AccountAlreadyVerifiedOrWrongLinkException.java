@@ -1,10 +1,10 @@
 package com.Ada.SFCAuthenticator.model.exceptions;
 
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
+/**
+ * Exception class for account already verified or wrong link scenarios.
+ */
 public class AccountAlreadyVerifiedOrWrongLinkException extends RuntimeException {
-  public AccountAlreadyVerifiedOrWrongLinkException() {
-    super("Account already verified or wrong link");
-  }
+    public AccountAlreadyVerifiedOrWrongLinkException() {
+        super("Account already verified or wrong link");
+    }
 }

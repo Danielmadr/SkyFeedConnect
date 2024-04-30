@@ -9,29 +9,37 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+/**
+ * This service class handles sending emails using JavaMailSender.
+ */
 @Service
 @RequiredArgsConstructor
 public class EmailService {
 
-  @Value("${spring.mail.username}")
-  private String sender;
+    @Value("${spring.mail.username}")
+    private String sender;
 
-  private final JavaMailSender javaMailSender;
+    private final JavaMailSender javaMailSender;
 
-  public void sendEmail(String destiny, String subject, String body, HttpHeaders headers) throws MessagingException {
-    MimeMessage message = javaMailSender.createMimeMessage();
+    /**
+     * Sends an email using the configured JavaMailSender.
+     * @param destiny The recipient email address.
+     * @param subject The email subject.
+     * @param body The email body content.
+     * @param headers The HTTP headers.
+     * @throws MessagingException If an error occurs during email sending.
+     */
+    public void sendEmail(String destiny, String subject, String body, HttpHeaders headers) throws MessagingException {
+        MimeMessage message = javaMailSender.createMimeMessage();
 
-    // Use MimeMessageHelper para configurar o e-mail
-    MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8"); // true indica que o e-mail terá conteúdo HTML
+        MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
 
-    // Defina o remetente, destinatário, assunto e corpo do e-mail
-    helper.setFrom(sender);
-    helper.setTo(destiny);
-    helper.setSubject(subject);
-    helper.setText(body, true); // O segundo parâmetro true indica que o corpo é HTML
+        helper.setFrom(sender);
+        helper.setTo(destiny);
+        helper.setSubject(subject);
+        helper.setText(body, true);
 
-    // Envie o e-mail
-    javaMailSender.send(message);
-    System.err.println("Email de verificação enviado"); // Adicionando um log
-  }
+        javaMailSender.send(message);
+        System.err.println("Email de verificação enviado");
+    }
 }
