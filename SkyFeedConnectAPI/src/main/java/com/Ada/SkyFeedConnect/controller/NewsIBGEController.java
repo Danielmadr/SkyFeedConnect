@@ -18,6 +18,14 @@ public class NewsIBGEController {
     this.newsIBGEService = newsIBGEService;
   }
 
+
+    /**
+     * Retrieves news from IBGE based on the specified quantity.
+     *
+     * @param qtd The quantity of news items to retrieve.
+     * @return A DTO containing news data from IBGE.
+     */
+
   @GetMapping("/{qtd}")
   public NewsResponseIBGE_DTO getNewsIBGE(@PathVariable Integer qtd) {
     return newsIBGEService.getNewsIBGE(qtd);

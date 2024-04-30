@@ -10,10 +10,11 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      "@features": resolve(__dirname, "src/components/features"),
       "@components": resolve(__dirname, "src/components"),
-      "@style": resolve(__dirname, "src/style"),
-      "@commoncomponents": resolve(__dirname, "src/components/common"),
-      "@commonstyle": resolve(__dirname, "src/style/common"),
+      "@styles": resolve(__dirname, "src/styles"),
+      "@images": resolve(__dirname, "src/assets/images"),
+      "@pages": resolve(__dirname, "src/pages"),
     },
   },
   build: {
