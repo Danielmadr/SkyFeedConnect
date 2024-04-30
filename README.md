@@ -6,7 +6,7 @@ Bem-vindo ao projeto SkyFeedConnect! Este README serve como uma introdução ao 
 
 - [README da pasta "SFCAuthenticator"](/SFCAuthenticator/README.md)
 - [README da pasta "SkyFeedConnect API Services"](/SkyFeedConnectAPI/README.md)
-- [README da pasta "SkyFeedConnect Frontend"](/vite-project/public/README.md)
+- [README da pasta "SkyFeedConnect Frontend"](/SkyFeedConnectFrontend/public/README.md)
 
 ---
 
