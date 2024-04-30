@@ -42,7 +42,7 @@ O projeto está organizado da seguinte forma:
 - Utiliza o hook `useAuth` para autenticação.
 - Contém formulário de login e redirecionamentos para cadastro.
 
-![LoginPage.jsx](https://github.com/yxsbx/SkyFeedConnect-Java-React/blob/5e346bcb0888ffe6dfaabbf18fe853441686b9cd/screenshots/LoginPage.png)
+![LoginPage.jsx](https://github.com/Danielmadr/SkyFeedConnect/blob/43e7a11b03ce82aeb1c2aedd6c577c9e618e3aa7/screenshots/LoginPage.png)
 
 ### SignUpPage.jsx
 
@@ -50,7 +50,7 @@ O projeto está organizado da seguinte forma:
 - Faz requisições para registrar novos usuários.
 - Utiliza `react-toastify` para exibir mensagens de erro/sucesso.
 
-![SignUpPage.jsx](https://github.com/yxsbx/SkyFeedConnect-Java-React/blob/5e346bcb0888ffe6dfaabbf18fe853441686b9cd/screenshots/SignUpPage.png)
+![SignUpPage.jsx](https://github.com/Danielmadr/SkyFeedConnect/blob/43e7a11b03ce82aeb1c2aedd6c577c9e618e3aa7/screenshots/SignUpPage.png)
 
 ### MainPage.jsx
 
@@ -58,7 +58,7 @@ O projeto está organizado da seguinte forma:
 - Exibe feed de notícias, previsão do tempo e data/hora.
 - Permite logout e redirecionamentos.
 
-![MainPage.jsx](https://github.com/yxsbx/SkyFeedConnect-Java-React/blob/5e346bcb0888ffe6dfaabbf18fe853441686b9cd/screenshots/MainPage.png)
+![MainPage.jsx](https://github.com/Danielmadr/SkyFeedConnect/blob/43e7a11b03ce82aeb1c2aedd6c577c9e618e3aa7/screenshots/MainPage.png)
 
 #### DateTimeWidget.jsx
 
@@ -95,7 +95,7 @@ O projeto está organizado da seguinte forma:
 - Utiliza eventos de clique para criar os efeitos de fogos de artifício na posição do clique do usuário.
 - Este componente adiciona uma interação visual interessante à aplicação.
 
-![EmailVerified](https://github.com/yxsbx/SkyFeedConnect-Java-React/blob/5e346bcb0888ffe6dfaabbf18fe853441686b9cd/screenshots/EmailVerification.png)
+![EmailVerified](https://github.com/Danielmadr/SkyFeedConnect/blob/43e7a11b03ce82aeb1c2aedd6c577c9e618e3aa7/screenshots/EmailVerification.png)
 
 ### VerifyEmail.jsx
 
@@ -105,7 +105,7 @@ O projeto está organizado da seguinte forma:
 - Renderiza a mensagem de verificação e o componente `FireworksCanvas` para exibir os fogos de artifício ao verificar o email com sucesso.
 - Este componente é importante para a funcionalidade de verificação de email e proporciona uma experiência visual agradável ao usuário.
 
-![EmailVerification](https://github.com/yxsbx/SkyFeedConnect-Java-React/blob/5e346bcb0888ffe6dfaabbf18fe853441686b9cd/screenshots/ConfirmationEmail.png)
+![EmailVerification](https://github.com/Danielmadr/SkyFeedConnect/blob/43e7a11b03ce82aeb1c2aedd6c577c9e618e3aa7/screenshots/ConfirmationEmail.png)
 
 ---
 
