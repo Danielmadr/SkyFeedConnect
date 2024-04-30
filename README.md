@@ -6,8 +6,6 @@ Bem-vindo ao projeto SkyFeedConnect! Este README serve como uma introdução ao 
 - [README da pasta "SkyFeedConnect API Services"](SkyFeedConnectAPI/README.md)
 - [README da pasta "SkyFeedConnect Frontend"](vite-project/public/README.md)
 
----
-
 ## Funcionalidades Principais
 
 - **Autenticação de Usuários:** Login, registro de novos usuários e verificação de email.
@@ -53,13 +51,9 @@ cd NomeDaPastaDoProjeto
 
 O módulo `SFCAuthenticator` é responsável pela autenticação de usuários e gerenciamento de acessos utilizando tokens JSON Web (JWT).
 
----
-
 ## SkyFeedConnect API Services
 
 Esta parte do projeto engloba os serviços da SkyFeedConnect API, permitindo interação com APIs externas, gerenciamento de usuários e mais.
-
----
 
 ## SkyFeedConnect Frontend
 
@@ -82,8 +76,6 @@ Welcome to the SkyFeedConnect project! This README serves as an introduction to 
 - [README for "SFCAuthenticator" folder](\SFCAuthenticator\README.md)
 - [README for "SkyFeedConnect API Services" folder](\SkyFeedConnectAPI\README.md)
 - [README for "SkyFeedConnect Frontend" folder](\vite-project\public\README.md)
-
----
 
 ## Key Features
 
