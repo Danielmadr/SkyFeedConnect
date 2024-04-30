@@ -2,9 +2,13 @@
 
 Bem-vindo ao projeto SkyFeedConnect! Este README serve como uma introdução ao projeto, descrevendo suas funcionalidades principais, tecnologias utilizadas e informações sobre o grupo responsável pelo desenvolvimento. Este documento fornece uma visão geral do projeto SkyFeedConnect, incluindo suas diferentes partes e tecnologias utilizadas. Abaixo estão os links para os READMEs de cada pasta específica do projeto:
 
-- [README da pasta "SFCAuthenticator"](SFCAuthenticator/README.md)
-- [README da pasta "SkyFeedConnect API Services"](SkyFeedConnectAPI/README.md)
-- [README da pasta "SkyFeedConnect Frontend"](vite-project/public/README.md)
+![SkyFeedConnect Gif](https://github.com/Danielmadr/SkyFeedConnect/blob/0b104ad61e3e57ea676e2b8387d699e370fd7b64/screenshots/Complete%20project.gif)
+
+- [README da pasta "SFCAuthenticator"](\SFCAuthenticator\README.md)
+- [README da pasta "SkyFeedConnect API Services"](\SkyFeedConnectAPI\README.md)
+- [README da pasta "SkyFeedConnect Frontend"](\vite-project\public\README.md)
+
+---
 
 ## Funcionalidades Principais
 
@@ -43,7 +47,7 @@ Bem-vindo ao projeto SkyFeedConnect! Este README serve como uma introdução ao 
 2. **Clonar o Repositório:**
 
 ```bash
-git clone [https://github.com/Danielmadr/SkyFeedConnect.git]
+git clone [https://github.com/yxsbx/SkyFeedConnect-Java-React.git]
 cd NomeDaPastaDoProjeto
 ```
 
@@ -51,9 +55,13 @@ cd NomeDaPastaDoProjeto
 
 O módulo `SFCAuthenticator` é responsável pela autenticação de usuários e gerenciamento de acessos utilizando tokens JSON Web (JWT).
 
+---
+
 ## SkyFeedConnect API Services
 
 Esta parte do projeto engloba os serviços da SkyFeedConnect API, permitindo interação com APIs externas, gerenciamento de usuários e mais.
+
+---
 
 ## SkyFeedConnect Frontend
 
@@ -76,6 +84,8 @@ Welcome to the SkyFeedConnect project! This README serves as an introduction to 
 - [README for "SFCAuthenticator" folder](\SFCAuthenticator\README.md)
 - [README for "SkyFeedConnect API Services" folder](\SkyFeedConnectAPI\README.md)
 - [README for "SkyFeedConnect Frontend" folder](\vite-project\public\README.md)
+
+---
 
 ## Key Features
 
@@ -114,7 +124,7 @@ Welcome to the SkyFeedConnect project! This README serves as an introduction to 
 2. **Clone the Repository:**
 
 ```bash
-git clone [https://github.com/Danielmadr/SkyFeedConnect.git]
+git clone [https://github.com/yxsbx/SkyFeedConnect-Java-React.git]
 cd ProjectFolderName
 ```
 
