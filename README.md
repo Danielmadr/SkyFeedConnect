@@ -2,11 +2,11 @@
 
 Bem-vindo ao projeto SkyFeedConnect! Este README serve como uma introdução ao projeto, descrevendo suas funcionalidades principais, tecnologias utilizadas e informações sobre o grupo responsável pelo desenvolvimento. Este documento fornece uma visão geral do projeto SkyFeedConnect, incluindo suas diferentes partes e tecnologias utilizadas. Abaixo estão os links para os READMEs de cada pasta específica do projeto:
 
-![SkyFeedConnect Gif](https://github.com/Danielmadr/SkyFeedConnect/blob/0b104ad61e3e57ea676e2b8387d699e370fd7b64/screenshots/Complete%20project.gif)
+![SkyFeedConnect Gif](https://github.com/Danielmadr/SkyFeedConnect/blob/aa2a685209151d319c4e4e29d87b2e6933dec4a3/screenshots/Complete%20project.gif)
 
-- [README da pasta "SFCAuthenticator"](\SFCAuthenticator\README.md)
-- [README da pasta "SkyFeedConnect API Services"](\SkyFeedConnectAPI\README.md)
-- [README da pasta "SkyFeedConnect Frontend"](\vite-project\public\README.md)
+- [README da pasta "SFCAuthenticator"](/SFCAuthenticator/README.md)
+- [README da pasta "SkyFeedConnect API Services"](/SkyFeedConnectAPI/README.md)
+- [README da pasta "SkyFeedConnect Frontend"](/vite-project/public/README.md)
 
 ---
 
@@ -81,9 +81,9 @@ Este projeto foi desenvolvido por:
 
 Welcome to the SkyFeedConnect project! This README serves as an introduction to the project, describing its main functionalities, technologies used, and information about the group responsible for the development. This document provides an overview of the SkyFeedConnect project, including its different parts and technologies used. Below are the links to the READMEs of each specific folder in the project:
 
-- [README for "SFCAuthenticator" folder](\SFCAuthenticator\README.md)
-- [README for "SkyFeedConnect API Services" folder](\SkyFeedConnectAPI\README.md)
-- [README for "SkyFeedConnect Frontend" folder](\vite-project\public\README.md)
+- [README for "SFCAuthenticator" folder](/SFCAuthenticator/README.md)
+- [README for "SkyFeedConnect API Services" folder](/SkyFeedConnectAPI/README.md)
+- [README for "SkyFeedConnect Frontend" folder](/vite-project/public/README.md)
 
 ---
 
