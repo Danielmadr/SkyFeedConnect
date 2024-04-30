@@ -1,86 +1,147 @@
 # SkyFeedConnect
 
-SkyFeed é uma aplicação web que combina notícias atualizadas e informações meteorológicas em uma plataforma centralizada. Os usuários podem se cadastrar, fazer login e desfrutar de uma experiência personalizada de notícias e clima.
+Bem-vindo ao projeto SkyFeedConnect! Este README serve como uma introdução ao projeto, descrevendo suas funcionalidades principais, tecnologias utilizadas e informações sobre o grupo responsável pelo desenvolvimento. Este documento fornece uma visão geral do projeto SkyFeedConnect, incluindo suas diferentes partes e tecnologias utilizadas. Abaixo estão os links para os READMEs de cada pasta específica do projeto:
 
-## Funcionalidades
+- [README da pasta "SFCAuthenticator"](\SFCAuthenticator\README.md)
+- [README da pasta "SkyFeedConnect API Services"](\SkyFeedConnectAPI\README.md)
+- [README da pasta "SkyFeedConnect Frontend"](\vite-project\public\README.md)
 
-- **Registro e Login**: Os usuários podem se cadastrar e fazer login para acessar a plataforma.
+---
 
-- **Notícias Atualizadas**: Exibe notícias recentes de várias fontes.
+## Funcionalidades Principais
 
-- **Previsão Meteorológica**: Fornece informações meteorológicas em tempo real e previsões para os próximos dias.
-
-- **Personalização**: Os usuários podem personalizar suas preferências, como localização para a previsão do tempo e categorias de notícias favoritas.
-
-- **Conta Administrativa**:
-  - A conta administrativa tem privilégios para gerenciar outras contas de usuário.
-  - Pode visualizar e editar informações de usuários.
-  - Pode gerenciar categorias de notícias e outras configurações da aplicação.
-
-## Regras de Negócio
-
-- **Autenticação Segura**:
-  - Todas as operações na plataforma requerem autenticação via token JWT.
-  - Apenas usuários autenticados podem acessar as funcionalidades principais da aplicação.
-
-- **Gerenciamento de Contas**:
-  - Apenas a conta administrativa pode realizar operações de gerenciamento de contas de usuário, como bloqueio ou exclusão.
-
-- **Privacidade dos Dados**:
-  - Os dados dos usuários (como informações de login, preferências e dados meteorológicos personalizados) são armazenados de forma segura e protegidos contra acesso não autorizado.
-
-## Requisitos Funcionais
-
-- Registro de Usuário
-- Login de Usuário
-- Exibição de Notícias Atualizadas
-- Exibição de Informações Meteorológicas
-- Personalização de Preferências do Usuário
-- Gerenciamento de Contas de Usuário pela Conta Administrativa
-
-## Requisitos Não Funcionais
-
-- Segurança: Implementação de autenticação segura com tokens JWT.
-- Desempenho: Respostas rápidas para solicitações de notícias e informações meteorológicas.
-- Usabilidade: Interface amigável e intuitiva para os usuários.
+- **Autenticação de Usuários:** Login, registro de novos usuários e verificação de email.
+- **Integração com APIs Externas:** Recuperação de dados de notícias da API do IBGE e informações meteorológicas da API OpenWeatherMap.
+- **Exibição de Conteúdo Dinâmico:** Feed de notícias atualizado e previsão do tempo em tempo real.
+- **Componentes Interativos:** Efeitos visuais como fogos de artifício ao clicar na tela.
 
 ## Tecnologias Utilizadas
 
-- **Spring Boot**: Para o desenvolvimento do backend da aplicação.
-- **Thymeleaf (ou Angular/React/Vue.js)**: Para o frontend interativo.
-- **Spring Security com JWT**: Para autenticação e segurança.
-- **APIs Utilizadas**:
-  - News API (https://newsapi.org/): Para obter notícias atualizadas.
-  - OpenWeather API (https://openweathermap.org/api): Para informações meteorológicas.
+- **Frontend:**
 
-## Como Executar
+  - React.js
+  - React Router
+  - Axios para requisições HTTP
+  - React Toastify para notificações
+  - Font Awesome para ícones
+  - ESLint para linting
+  - Vite.js para build e desenvolvimento rápido
 
-1. **Configuração do Ambiente**:
-   - Certifique-se de ter o Java e o Maven instalados.
+- **Backend:**
+  - Spring Boot
+  - Spring Security
+  - JWT (Json Web Token)
+  - JavaMailSender para envio de emails
+  - Lombok para redução de código boilerplate
 
-2. **Clonar o Repositório**:
-   ```bash
-   git clone https://github.com/seu-usuario/skyfeed.git
-   ```
+## Como Executar o Projeto
 
-3. **Configuração das Chaves da API**:
-   - Obtenha as chaves de API necessárias para o News API e OpenWeather API e configure-as no arquivo `application.properties`.
+1. **Pré-requisitos:**
 
-4. **Executar a Aplicação**:
-   - Navegue até o diretório do projeto e execute:
-     ```bash
-     mvn spring-boot:run
-     ```
-   - Acesse a aplicação em `http://localhost:8080`.
+- Node.js e npm/yarn instalados para o frontend.
+- Java JDK 11+ e Maven para o backend.
+- Um servidor SMTP configurado para envio de emails.
 
-## Contribuição
+2. **Clonar o Repositório:**
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir um pull request com melhorias ou correções.
+```bash
+git clone [https://github.com/Danielmadr/SkyFeedConnect.git]
+cd NomeDaPastaDoProjeto
+```
 
-## Equipe
+## SFCAuthenticator
 
-[Daniel Martins de Andrade](https://github.com/Danielmadr)
+O módulo `SFCAuthenticator` é responsável pela autenticação de usuários e gerenciamento de acessos utilizando tokens JSON Web (JWT).
 
-[Yasmin Barcelos](https://www.linkedin.com/in/yasminbarcelos/)
+---
 
-[Paulo Henrique](https://www.linkedin.com/in/paulo-henrique-3999341b8/)
+## SkyFeedConnect API Services
+
+Esta parte do projeto engloba os serviços da SkyFeedConnect API, permitindo interação com APIs externas, gerenciamento de usuários e mais.
+
+---
+
+## SkyFeedConnect Frontend
+
+A parte de frontend do projeto SkyFeedConnect oferece uma interface web para interação com APIs externas, gerenciamento de usuários e exibição de conteúdos.
+
+## Grupo
+
+Este projeto foi desenvolvido por:
+
+- Yasmin Barcelos
+- Daniel Martins
+- Paulo Henrique
+
+---
+
+# SkyFeedConnect - EN VERSION
+
+Welcome to the SkyFeedConnect project! This README serves as an introduction to the project, describing its main functionalities, technologies used, and information about the group responsible for the development. This document provides an overview of the SkyFeedConnect project, including its different parts and technologies used. Below are the links to the READMEs of each specific folder in the project:
+
+- [README for "SFCAuthenticator" folder](\SFCAuthenticator\README.md)
+- [README for "SkyFeedConnect API Services" folder](\SkyFeedConnectAPI\README.md)
+- [README for "SkyFeedConnect Frontend" folder](\vite-project\public\README.md)
+
+---
+
+## Key Features
+
+- **User Authentication:** Login, registration of new users, and email verification.
+- **Integration with External APIs:** Retrieval of news data from the IBGE API and weather information from the OpenWeatherMap API.
+- **Dynamic Content Display:** Updated news feed and real-time weather forecast.
+- **Interactive Components:** Visual effects like fireworks upon clicking on the screen.
+
+## Technologies Used
+
+- **Frontend:**
+
+  - [React.js](link to frontend folder)
+  - React Router
+  - Axios for HTTP requests
+  - React Toastify for notifications
+  - Font Awesome for icons
+  - ESLint for linting
+  - Vite.js for fast build and development
+
+- **Backend:**
+  - [Spring Boot](link to backend folder)
+  - Spring Security
+  - JWT (Json Web Token)
+  - JavaMailSender for email sending
+  - Lombok for reducing boilerplate code
+
+## How to Run the Project
+
+1. **Prerequisites:**
+
+   - Node.js and npm/yarn installed for the frontend.
+   - Java JDK 11+ and Maven for the backend.
+   - An SMTP server configured for email sending.
+
+2. **Clone the Repository:**
+
+```bash
+git clone [https://github.com/Danielmadr/SkyFeedConnect.git]
+cd ProjectFolderName
+```
+
+## SFCAuthenticator
+
+The SFCAuthenticator module is responsible for user authentication and access management using JSON Web Tokens (JWT). Learn more in the SFCAuthenticator README.
+
+## SkyFeedConnect API Services
+
+This part of the project encompasses the services of the SkyFeedConnect API, allowing interaction with external APIs, user management, and more. Check out the API Services README for details.
+
+## SkyFeedConnect Frontend
+
+The frontend part of the SkyFeedConnect project offers a web interface for interaction with external APIs, user management, and content display. See the Frontend README for complete details.
+
+## Group
+
+This project was developed by:
+
+- Yasmin Barcelos
+- Daniel Martins
+- Paulo Henrique
